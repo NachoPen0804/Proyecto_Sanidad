@@ -73,7 +73,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="370.0" fitWidth="700.0" layoutY="105.0" opacity="0.5" pickOnBounds="true">
+      <ImageView fitHeight="370.0" fitWidth="700.0" layoutY="105.0" opacity="0.41" pickOnBounds="true">
          <image>
             <Image url="@LogoSanidad.png" />
          </image>
@@ -84,6 +84,18 @@
       <AnchorPane layoutY="99.0" prefHeight="376.0" prefWidth="700.0">
          <children>
             <FontAwesomeIconView fill="#22ff00" glyphName="PLUS" layoutX="661.0" layoutY="35.0" size="25" />
+            <AnchorPane layoutX="39.0" layoutY="36.0" prefHeight="316.0" prefWidth="621.0">
+               <children>
+                  <HBox prefHeight="42.0" prefWidth="621.0" style="-fx-background-color: #A2C9DE; -fx-opacity: 0.5;" />
+                  <HBox layoutY="62.0" prefHeight="42.0" prefWidth="621.0" style="-fx-background-color: #b4e6ed; -fx-opacity: 0.5;" />
+                  <HBox layoutY="125.0" prefHeight="42.0" prefWidth="621.0" style="-fx-background-color: #A2C9DE; -fx-opacity: 0.5;" />
+                  <HBox layoutY="190.0" prefHeight="42.0" prefWidth="621.0" style="-fx-background-color: #b4e6ed; -fx-opacity: 0.5;" />
+                  <HBox layoutY="253.0" prefHeight="42.0" prefWidth="621.0" style="-fx-background-color: #A2C9DE; -fx-opacity: 0.5;" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="83.0" layoutY="18.0" text="ID" />
+            <Label layoutX="175.0" layoutY="18.0" text="Nombre" />
+            <Label layoutX="276.0" layoutY="18.0" text="Apellidos" />
          </children>
       </AnchorPane>
    </children>
