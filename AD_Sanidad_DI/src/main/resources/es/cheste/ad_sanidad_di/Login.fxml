@@ -23,18 +23,8 @@
                                 <Font name="Tahoma" size="20.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="login_usuario" layoutX="39.0" layoutY="177.0" onAction="#loginAccount" prefHeight="30.0" prefWidth="250.0" promptText="Usuario">
-                            <styleClass>
-                                <String fx:value="textfield-3" />
-                                <String fx:value="white-bg" />
-                            </styleClass>
-                        </TextField>
-                        <PasswordField fx:id="login_contraseña" layoutX="39.0" layoutY="213.0" onAction="#loginAccount" prefHeight="30.0" prefWidth="250.0" promptText="Contraseña">
-                            <styleClass>
-                                <String fx:value="textfield-3" />
-                                <String fx:value="white-bg" />
-                            </styleClass>
-                        </PasswordField>
+                        <TextField fx:id="login_usuario" layoutX="39.0" layoutY="177.0" onAction="#loginAccount" prefHeight="30.0" prefWidth="250.0" promptText="Usuario" />
+                        <PasswordField fx:id="login_contraseña" layoutX="39.0" layoutY="213.0" onAction="#loginAccount" prefHeight="30.0" prefWidth="250.0" promptText="Contraseña" />
                         <TextField fx:id="login_showPassword" layoutX="39.0" layoutY="213.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" visible="false">
                             <styleClass>
                                 <String fx:value="textfield-1" />
@@ -42,12 +32,7 @@
                             </styleClass>
                         </TextField>
                         <CheckBox fx:id="login_checkBox" layoutX="39.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginShowPassword" text="Mostrar Contraseña" />
-                        <Button fx:id="login_boton" layoutX="40.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginAccount" prefHeight="40.0" prefWidth="250.0" text="Entrar">
-                            <styleClass>
-                                <String fx:value="btn-3" />
-                                <String fx:value="radius" />
-                            </styleClass>
-                        </Button>
+                        <Button fx:id="login_boton" layoutX="40.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginAccount" prefHeight="40.0" prefWidth="250.0" text="Entrar" />
                     </children>
                 </AnchorPane>
             </children>
