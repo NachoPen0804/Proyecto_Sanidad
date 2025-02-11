@@ -17,8 +17,6 @@ public class HelloController {
 	@FXML
 	private PasswordField login_password;
 	@FXML
-	private ComboBox login_user;
-	@FXML
 	private AnchorPane login_form;
 	@FXML
 	private AnchorPane main_form;
@@ -38,7 +36,7 @@ public class HelloController {
 	public void loginShowPassword(ActionEvent actionEvent) {
 	}
 
-	@FXML
+	@Deprecated
 	public void switchPage(ActionEvent actionEvent) {
 	}
 }
