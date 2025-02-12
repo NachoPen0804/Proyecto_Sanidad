@@ -26,13 +26,13 @@ and open the template in the editor.
 }
 
 .header-2{
-    -fx-border-color: linear-gradient(to bottom right, #a413a1, #64308e);
+    -fx-border-color: linear-gradient(to bottom right, #a413a1, #306090);
     -fx-border-width: 0 0 0 2px;
     -fx-padding: 0 0 0 5px;
 }
 
 .bg-color-2{
-    -fx-background-color: linear-gradient(to bottom right, #a413a1, #64308e);
+    -fx-background-color: linear-gradient(to bottom right, #a413a1, #306090);
 }
 
 .nav-btn-2{

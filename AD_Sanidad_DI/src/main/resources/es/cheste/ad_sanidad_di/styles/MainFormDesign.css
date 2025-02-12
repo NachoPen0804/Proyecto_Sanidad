@@ -24,7 +24,7 @@ and open the template in the editor.
 }
 
 .header-2{
-    -fx-border-color: linear-gradient(to bottom right, #a413a1, #64308e);
+    -fx-border-color: linear-gradient(to bottom right, #13a482, #308b8e);
     -fx-border-width: 0 0 0 2px;
     -fx-padding: 0 0 0 5px;
 }
@@ -42,7 +42,7 @@ and open the template in the editor.
 }
 
 .bg-color-2{
-    -fx-background-color: linear-gradient(to bottom right, #a413a1, #64308e);
+    -fx-background-color: linear-gradient(to bottom right, #188ba7, #306090);
 }
 
 .nav-btn-1{
