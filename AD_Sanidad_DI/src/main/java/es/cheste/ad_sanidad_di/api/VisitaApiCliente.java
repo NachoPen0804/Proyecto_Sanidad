@@ -3,6 +3,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import es.cheste.ad_sanidad_di.model.Visita;
 
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 public class VisitaApiCliente extends ApiClientBase<Visita>{
 	public VisitaApiCliente() {
 		super("http://localhost:8080/api/visitas");
@@ -12,4 +16,6 @@ public class VisitaApiCliente extends ApiClientBase<Visita>{
 		return new TypeReference<Visita>() {
 		};
 	}
+
+	
 }

@@ -11,11 +11,9 @@ import javafx.stage.Stage;
 public class JavaFxApp extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
-		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
-
-		Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/PanelMedico.fxml"));
-		stage.setScene(new Scene(root, screenBounds.getWidth(), screenBounds.getHeight()));
+		Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/Login.fxml"));
+		stage.setScene(new Scene(root, 330,550));
 		stage.show();
 	}
 

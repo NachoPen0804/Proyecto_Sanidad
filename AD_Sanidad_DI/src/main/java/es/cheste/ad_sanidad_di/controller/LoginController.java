@@ -24,7 +24,6 @@ public class LoginController {
 	@javafx.fxml.FXML
 	private PasswordField login_contraseña;
 
-	// Credenciales fijas
 	private static final String USUARIO_VALIDO = "admin";
 	private static final String CONTRASEÑA_VALIDA = "1234";
 
@@ -60,7 +59,7 @@ public class LoginController {
 
 	private void abrirVentanaPrincipal() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/main-view.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/PanelMedico.fxml"));
 			Stage stage = (Stage) login_boton.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setTitle("Sistema Hospitalario");
