@@ -1,9 +1,10 @@
 package es.cheste.ad_sanidad_di.controller;
 
-import es.cheste.ad_sanidad_di.api.PacienteApiClient;
+
 import es.cheste.ad_sanidad_di.api.VisitaApiCliente;
 import es.cheste.ad_sanidad_di.model.Paciente;
 import es.cheste.ad_sanidad_di.model.Visita;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,53 +56,57 @@ public class PanelMedicoController {
 	private Label dashboard_IP;
 	@javafx.fxml.FXML
 	private Button logout_btn;
+	@FXML
+	private TableColumn apellidos_tabla;
+	@FXML
+	private TableColumn id_hospital_tabla;
+	@FXML
+	private TableColumn id_tabla;
+	@FXML
+	private TableColumn nombre_tablas;
+	@FXML
+	private TableView tablaCitas;
+
+	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
 
 
-	@javafx.fxml.FXML
-	private TableColumn tabla_fecha;
-	@javafx.fxml.FXML
-	private TableColumn tabla_id;
-	@javafx.fxml.FXML
-	private TableColumn tabla_medicoId;
-	@javafx.fxml.FXML
-	private TableColumn tabla_pacienteId;
-	@javafx.fxml.FXML
-	private TableView tabla_citas;
-
-	@javafx.fxml.FXML
+	@Deprecated
 	public void pacientes_lista(ActionEvent actionEvent) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/prueba.fxml"));
 
-			// Crear una nueva escena
 			Scene scene = new Scene(root);
 
-			// Crear una nueva ventana (Stage)
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.setTitle("Nueva Ventana");
 
-			// Mostrar la nueva ventana
 			stage.show();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
 	}
+
 	@FXML
 	public void initialize() {
-		tabla_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-		tabla_pacienteId.setCellValueFactory(new PropertyValueFactory<>("paciente.id"));
-		tabla_medicoId.setCellValueFactory(new PropertyValueFactory<>("medico.id"));
-		tabla_fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+		id_tabla.setCellValueFactory(new PropertyValueFactory<>("id"));
+		nombre_tablas.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		apellidos_tabla.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
+		id_hospital_tabla.setCellValueFactory(new PropertyValueFactory<>("idHospital"));
 
 		cargarDatos();
 	}
 
 	private void cargarDatos() {
-		List<Visita> visitasList = VisitaApiCliente.obtenerVisitas();
-		ObservableList<Visita> observableVisitasList = FXCollections.observableArrayList(visitasList);
-		tabla_citas.setItems(observableVisitasList);
+		visitaApi.getAll().thenAccept(visitas -> {
+			Platform.runLater(() -> {
+				tablaCitas.setItems(FXCollections.observableArrayList(visitas));
+			});
+		}).exceptionally(ex -> {
+			ex.printStackTrace();
+			return null;
+		});
 	}
-	
+
 }

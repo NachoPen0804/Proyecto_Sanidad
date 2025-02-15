@@ -27,4 +27,9 @@ public class Visita {
 	
 	@Column(name = "fecha")
 	LocalDate fecha;
+	
+	@Column(name = "id_hospital")
+	private Long idHospital;
+
+
 }
