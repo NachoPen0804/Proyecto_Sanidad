@@ -2,6 +2,7 @@ package es.cheste.ad_sanidad_di.controller;
 
 
 import es.cheste.ad_sanidad_di.api.VisitaApiCliente;
+import es.cheste.ad_sanidad_di.model.Medico;
 import es.cheste.ad_sanidad_di.model.Paciente;
 import es.cheste.ad_sanidad_di.model.Visita;
 import javafx.application.Platform;
@@ -19,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class PanelMedicoController {
@@ -57,16 +59,17 @@ public class PanelMedicoController {
 	@javafx.fxml.FXML
 	private Button logout_btn;
 	@FXML
-	private TableColumn apellidos_tabla;
+	private TableColumn<Visita, Long> id_tabla;
 	@FXML
-	private TableColumn id_hospital_tabla;
-	@FXML
-	private TableColumn id_tabla;
-	@FXML
-	private TableColumn nombre_tablas;
-	@FXML
-	private TableView tablaCitas;
+	private TableView<Visita> tablaCitas;
 
+	@FXML
+	private TableColumn<Visita, Paciente> id_paciente_tabla;
+	@FXML
+	private TableColumn<Visita, Medico> id_medico_tabla;
+	@FXML
+	private TableColumn<Visita, LocalDate> fecha_tabla;
+	
 	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
 
 
@@ -91,9 +94,10 @@ public class PanelMedicoController {
 	@FXML
 	public void initialize() {
 		id_tabla.setCellValueFactory(new PropertyValueFactory<>("id"));
-		nombre_tablas.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-		apellidos_tabla.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
-		id_hospital_tabla.setCellValueFactory(new PropertyValueFactory<>("idHospital"));
+		id_paciente_tabla.setCellValueFactory(new PropertyValueFactory<>("paciente"));
+		id_medico_tabla.setCellValueFactory(new PropertyValueFactory<>("medico"));
+		fecha_tabla.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+
 
 		cargarDatos();
 	}
