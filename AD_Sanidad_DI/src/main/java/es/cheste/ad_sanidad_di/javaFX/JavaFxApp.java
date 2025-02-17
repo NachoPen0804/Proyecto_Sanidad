@@ -14,6 +14,7 @@ public class JavaFxApp extends Application {
 
 		Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/Login.fxml"));
 		stage.setScene(new Scene(root, 330,550));
+		stage.setResizable(false);
 		stage.show();
 	}
 
