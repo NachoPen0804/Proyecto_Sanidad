@@ -1,5 +1,8 @@
 package es.cheste.ad_sanidad_di.controller;
 
+import es.cheste.ad_sanidad_di.model.Usuario;
+import es.cheste.ad_sanidad_di.repository.UsuarioRepository;
+import es.cheste.ad_sanidad_di.service.UsuarioServicie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 public class LoginController {
 	@javafx.fxml.FXML
@@ -24,20 +29,21 @@ public class LoginController {
 	@javafx.fxml.FXML
 	private PasswordField login_contraseña;
 
-	private static final String USUARIO_VALIDO = "admin";
-	private static final String CONTRASEÑA_VALIDA = "1234";
+	private UsuarioServicie usuarioService;
 
 	@javafx.fxml.FXML
 	public void loginAccount(ActionEvent actionEvent) {
-		String usuario = login_usuario.getText().trim();
-		String contraseña = login_contraseña.getText().trim();
+		String usuario = login_usuario.getText();
+		String contraseña = login_contraseña.getText();
 
-		if(usuario.isEmpty() || contraseña.isEmpty()) {
+		if (usuario.isEmpty() || contraseña.isEmpty()) {
 			mostrarError("Campos vacíos", "Por favor complete todos los campos");
 			return;
 		}
 
-		if(usuario.equals(USUARIO_VALIDO) && contraseña.equals(CONTRASEÑA_VALIDA)) {
+		Usuario usuarioEncontrado = usuarioService.findByNombre(usuario);
+
+		if (usuarioEncontrado != null && usuarioEncontrado.getContraseña().equals(contraseña)) {
 			abrirVentanaPrincipal();
 		} else {
 			mostrarError("Credenciales incorrectas", "Usuario o contraseña inválidos");
@@ -46,7 +52,7 @@ public class LoginController {
 
 	@javafx.fxml.FXML
 	public void loginShowPassword(ActionEvent actionEvent) {
-		if(login_checkBox.isSelected()) {
+		if (login_checkBox.isSelected()) {
 			login_showPassword.setText(login_contraseña.getText());
 			login_showPassword.setVisible(true);
 			login_contraseña.setVisible(false);

@@ -2,17 +2,15 @@ package es.cheste.ad_sanidad_di.service;
 
 import es.cheste.ad_sanidad_di.model.Hospital;
 import es.cheste.ad_sanidad_di.repository.HospitalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class HospitalService {
-	private final HospitalRepository hospitalRepository;
-
-	public HospitalService(HospitalRepository hospitalRepository) {
-		this.hospitalRepository = hospitalRepository;
-	}
+	@Autowired
+	private  HospitalRepository hospitalRepository;
 	
 	public List<Hospital> findAll() {
 		return hospitalRepository.findAll();

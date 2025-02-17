@@ -2,7 +2,9 @@ package es.cheste.ad_sanidad_di.repository;
 
 import es.cheste.ad_sanidad_di.model.Visita;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface VisitaRepository extends JpaRepository<Visita, Long> {
 	/*
 	save(S entity): Guarda una entidad.

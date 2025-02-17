@@ -26,9 +26,24 @@ public class VisitaApiCliente {
 			return mapper.readValue(response.body(), new TypeReference<List<Visita>>() {});
 		} catch (Exception e) {
 			e.printStackTrace();
-			return List.of(); // Devuelve una lista vacía en caso de error
+			return List.of(); 
 		}
 	}
+	public void create(Visita visita) {
+	    try {
+	        String json = mapper.writeValueAsString(visita);
+	        HttpRequest request = HttpRequest.newBuilder()
+	            .uri(URI.create(baseUrl))
+	            .header("Content-Type", "application/json")
+	            .POST(HttpRequest.BodyPublishers.ofString(json))
+	            .build();
+	
+	        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	
 
 	

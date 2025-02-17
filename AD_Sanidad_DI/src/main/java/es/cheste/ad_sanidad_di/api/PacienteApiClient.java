@@ -1,20 +1,51 @@
 package es.cheste.ad_sanidad_di.api;
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import es.cheste.ad_sanidad_di.model.Paciente;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class PacienteApiClient extends ApiClientBase<Paciente>{
-	public PacienteApiClient() {
-		super("http://localhost:8080/api/pacientes");
+public class PacienteApiClient {
+	private final HttpClient client = HttpClient.newHttpClient();
+	private final String baseUrl = "http://localhost:8080/api/pacientes";
+	private final ObjectMapper mapper = new ObjectMapper();
+	
+	public List<Paciente> obtenerPacientes(){
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(baseUrl))
+				.GET()
+				.build();
+		
+		try {
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			return mapper.readValue(response.body(), new TypeReference<List<Paciente>>() {});
+		}catch (Exception e) {
+			e.printStackTrace();
+			return Collections.emptyList();
+		}
 	}
-	@Override
-	protected TypeReference<Paciente> getTypeReference() {
-		return new TypeReference<Paciente>() {
-		};
+	public void create(Paciente paciente) {
+	    try {
+	        String json = mapper.writeValueAsString(paciente);
+	        HttpRequest request = HttpRequest.newBuilder()
+	            .uri(URI.create(baseUrl))
+	            .header("Content-Type", "application/json")
+	            .POST(HttpRequest.BodyPublishers.ofString(json))
+	            .build();
+	
+	        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 	
+
+
 }
