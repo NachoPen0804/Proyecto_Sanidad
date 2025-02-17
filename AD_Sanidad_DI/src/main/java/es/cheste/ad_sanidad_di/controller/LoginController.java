@@ -1,5 +1,6 @@
 package es.cheste.ad_sanidad_di.controller;
 
+import es.cheste.ad_sanidad_di.api.UsuarioApiClient;
 import es.cheste.ad_sanidad_di.model.Usuario;
 import es.cheste.ad_sanidad_di.repository.UsuarioRepository;
 import es.cheste.ad_sanidad_di.service.UsuarioServicie;
@@ -28,9 +29,7 @@ public class LoginController {
 	private Button login_boton;
 	@javafx.fxml.FXML
 	private PasswordField login_contraseña;
-
-	private UsuarioServicie usuarioService;
-
+	
 	@javafx.fxml.FXML
 	public void loginAccount(ActionEvent actionEvent) {
 		String usuario = login_usuario.getText();
@@ -41,12 +40,12 @@ public class LoginController {
 			return;
 		}
 
-		Usuario usuarioEncontrado = usuarioService.findByNombre(usuario);
-
-		if (usuarioEncontrado != null && usuarioEncontrado.getContraseña().equals(contraseña)) {
-			abrirVentanaPrincipal();
+		UsuarioApiClient cliente = new UsuarioApiClient();
+		Usuario usuarioEncontrado = cliente.verificarUsuario(usuario, contraseña);
+		if (usuarioEncontrado != null) {
+		    abrirVentanaPrincipal();
 		} else {
-			mostrarError("Credenciales incorrectas", "Usuario o contraseña inválidos");
+		    mostrarError("Credenciales incorrectas", "Usuario o contraseña inválidos");
 		}
 	}
 
