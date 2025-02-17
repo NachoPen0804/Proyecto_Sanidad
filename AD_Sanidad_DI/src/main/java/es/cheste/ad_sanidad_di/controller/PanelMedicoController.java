@@ -87,6 +87,8 @@ public class PanelMedicoController {
 	private Label nombre_medico;
 	@FXML
 	private Label nombre_medico_superior;
+	
+	private long id_medico;
 
 
 	@Deprecated
@@ -146,7 +148,12 @@ public class PanelMedicoController {
 
 	@FXML
 	public void abrirVentanaAddCita(ActionEvent actionEvent) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/CitaAdd.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/CitaAdd.fxml"));
+		Parent root = loader.load();
+
+		CrearCitaController controller = loader.getController();
+		controller.setIdMedico(id_medico); 
+
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.setTitle("Añadir Cita");

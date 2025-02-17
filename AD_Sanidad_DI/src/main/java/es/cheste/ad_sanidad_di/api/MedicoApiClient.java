@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import es.cheste.ad_sanidad_di.model.Medico;
-import es.cheste.ad_sanidad_di.model.Paciente;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -13,11 +12,12 @@ import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
 
-public class MedicoApiClient{
+public class MedicoApiClient {
 	private final HttpClient client = HttpClient.newHttpClient();
 	private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 	private final String baseUrl = "http://localhost:8080/api/medicos";
-	public List<Medico> obtenerPacientes(){
+
+	public List<Medico> obtenerPacientes() {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(baseUrl))
 				.GET()
@@ -25,12 +25,14 @@ public class MedicoApiClient{
 
 		try {
 			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-			return mapper.readValue(response.body(), new TypeReference<List<Medico>>() {});
-		}catch (Exception e) {
+			return mapper.readValue(response.body(), new TypeReference<List<Medico>>() {
+			});
+		} catch (Exception e) {
 			e.printStackTrace();
 			return Collections.emptyList();
 		}
 	}
+
 	public void create(Medico medico) {
 		try {
 			String json = mapper.writeValueAsString(medico);
@@ -43,6 +45,21 @@ public class MedicoApiClient{
 			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public Medico obtenerMedicoPorId(long id) {
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(baseUrl + "/" + id))
+				.GET()
+				.build();
+
+		try {
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			return mapper.readValue(response.body(), Medico.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }
