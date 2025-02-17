@@ -80,8 +80,8 @@ public class Visita {
 	public String toString() {
 		return "Visita{" +
 				"id=" + id +
-				", paciente=" + paciente +
-				", medico=" + medico +
+				", paciente=" + paciente.getNombre() +
+				", medico=" + medico.getNombre() +
 				", fecha=" + fecha +
 				'}';
 	}

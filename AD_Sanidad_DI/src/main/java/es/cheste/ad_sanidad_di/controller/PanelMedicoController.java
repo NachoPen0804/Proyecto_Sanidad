@@ -64,9 +64,9 @@ public class PanelMedicoController {
 	private TableView<Visita> tablaCitas;
 
 	@FXML
-	private TableColumn<Visita, Paciente> id_paciente_tabla;
+	private TableColumn<Visita, String> id_paciente_tabla;
 	@FXML
-	private TableColumn<Visita, Medico> id_medico_tabla;
+	private TableColumn<Visita, String> id_medico_tabla;
 	@FXML
 	private TableColumn<Visita, LocalDate> fecha_tabla;
 	
