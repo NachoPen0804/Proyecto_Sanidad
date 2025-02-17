@@ -140,8 +140,8 @@
                                                         <TableView fx:id="tablaCitas" layoutX="13.0" layoutY="41.0" prefHeight="273.0" prefWidth="405.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="41.0">
                                                             <columns>
                                                                 <TableColumn fx:id="id_tabla" prefWidth="62.399973690509796" text="ID" />
-                                                                <TableColumn fx:id="id_paciente_tabla" prefWidth="104.8000602722168" text="ID_PACIENTE" />
-                                                                <TableColumn fx:id="id_medico_tabla" prefWidth="104.80001831054688" text="ID_MEDICO" />
+                                                                <TableColumn fx:id="id_paciente_tabla" prefWidth="104.8000602722168" text="PACIENTE" />
+                                                                <TableColumn fx:id="id_medico_tabla" prefWidth="104.80001831054688" text="MEDICO" />
                                                                 <TableColumn fx:id="fecha_tabla" prefWidth="88.0" text="FECHA" />
                                                             </columns>
                                                             <columnResizePolicy>
