@@ -103,14 +103,10 @@ public class PanelMedicoController {
 	}
 
 	private void cargarDatos() {
-		visitaApi.getAll().thenAccept(visitas -> {
-			Platform.runLater(() -> {
-				tablaCitas.setItems(FXCollections.observableArrayList(visitas));
-			});
-		}).exceptionally(ex -> {
-			ex.printStackTrace();
-			return null;
-		});
+
+		List<Visita> visitas = visitaApi.obtenerVisitas();
+		ObservableList<Visita> visitasObservableList = FXCollections.observableArrayList(visitas);
+		tablaCitas.setItems(visitasObservableList);
 	}
 
 }
