@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.cheste.ad_sanidad_di.controller.CrearCitaController">
+   <children>
+      <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="365.0" prefWidth="560.0" styleClass="bg-color" stylesheets="@../ad_sanidad_di/styles/LoginDesign.css">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="169.0" layoutY="84.0" selectionFill="RED" size="60" text="" wrappingWidth="52.79998779296875" />
+            <Label layoutX="222.0" layoutY="51.0" text="CREAR PACIENTE" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="paciente_nombre_text" layoutX="39.0" layoutY="134.0" prefHeight="30.0" prefWidth="183.0" promptText="NOMBRE" />
+            <TextField fx:id="login_showPassword" layoutX="39.0" layoutY="213.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" visible="false">
+               <styleClass>
+                  <String fx:value="textfield-1" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+            </TextField>
+            <Button fx:id="acept_add_paciente_btn" layoutX="329.0" layoutY="299.0" mnemonicParsing="false" onAction="#addCita" prefHeight="40.0" prefWidth="161.0" text="ACEPTAR" />
+            <Button fx:id="cancel_add_paciente_btn" layoutX="86.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddCita" prefHeight="40.0" prefWidth="161.0" text="CANCELAR" />
+            <Label layoutX="95.0" layoutY="105.0" text="NOMBRE" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="paciente_apellidos_text" layoutX="318.0" layoutY="134.0" prefHeight="30.0" prefWidth="183.0" promptText="APELLIDOS" />
+            <Label layoutX="364.0" layoutY="105.0" text="APELLIDOS" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="paciente_pueblo_text" layoutX="171.0" layoutY="213.0" prefHeight="30.0" prefWidth="206.0" promptText="PUEBLO RESIDENCIA" />
+            <Label layoutX="188.0" layoutY="183.0" text="PUEBLO RESIDENCIA" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
