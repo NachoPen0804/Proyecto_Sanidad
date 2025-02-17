@@ -25,7 +25,12 @@ public class Medico {
 
 	@Override
 	public String toString() {
-		return nombre;
+		return "Medico{" +
+				"id=" + id +
+				", nombre='" + nombre + '\'' +
+				", apellidos='" + apellidos + '\'' +
+				", hospital=" + hospital +
+				'}';
 	}
 
 	public long getId() {

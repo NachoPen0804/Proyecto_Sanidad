@@ -26,7 +26,12 @@ public class Paciente {
 
 	@Override
 	public String toString() {
-		return nombre.toUpperCase() + " " + apellidos.toUpperCase();
+		return "Paciente{" +
+				"id=" + id +
+				", nombre='" + nombre + '\'' +
+				", apellidos='" + apellidos + '\'' +
+				", pueblo_residencia='" + pueblo_residencia + '\'' +
+				'}';
 	}
 
 	public long getId() {

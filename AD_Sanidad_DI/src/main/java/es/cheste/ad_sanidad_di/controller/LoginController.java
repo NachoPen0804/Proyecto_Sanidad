@@ -43,7 +43,7 @@ public class LoginController {
 		UsuarioApiClient cliente = new UsuarioApiClient();
 		Usuario usuarioEncontrado = cliente.verificarUsuario(usuario, contraseña);
 		if (usuarioEncontrado != null) {
-		    abrirVentanaPrincipal();
+		    abrirVentanaPrincipal(usuarioEncontrado.getNombre());
 		} else {
 		    mostrarError("Credenciales incorrectas", "Usuario o contraseña inválidos");
 		}
@@ -62,9 +62,14 @@ public class LoginController {
 		}
 	}
 
-	private void abrirVentanaPrincipal() {
+	private void abrirVentanaPrincipal(String nombreUsuario) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/PanelMedico.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PanelMedico.fxml"));
+			Parent root = loader.load();
+
+			PanelMedicoController controller = loader.getController();
+			controller.setNombreMedico(nombreUsuario);
+			controller.setNombreMedicoSuperior(nombreUsuario);
 			Stage stage = (Stage) login_boton.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setTitle("Sistema Hospitalario");
