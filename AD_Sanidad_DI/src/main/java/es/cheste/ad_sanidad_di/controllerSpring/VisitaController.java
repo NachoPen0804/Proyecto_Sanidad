@@ -65,4 +65,12 @@ public class VisitaController {
 			throw e; // Retorna el error HTTP directamente
 		}
 	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> eliminarVisita(@PathVariable Long id) {
+		if (!visitaRepository.existsById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+		visitaRepository.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
 }

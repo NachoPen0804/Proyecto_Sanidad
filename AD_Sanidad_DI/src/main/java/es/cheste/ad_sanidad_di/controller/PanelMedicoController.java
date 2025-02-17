@@ -127,9 +127,7 @@ public class PanelMedicoController {
 		tablaCitas.setItems(visitasObservableList);
 	}
 
-	@FXML
-	public void abrirVentanaDeleteCita(ActionEvent actionEvent) {
-	}
+	
 
 	@FXML
 	public void abrirVentanaAddPaciente(ActionEvent actionEvent) {
@@ -146,13 +144,27 @@ public class PanelMedicoController {
 	}
 
 	@FXML
+	public void abrirVentanaDeleteCita(ActionEvent actionEvent) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/CitaDelete.fxml"));
+		Parent root = loader.load();
+		
+		EliminarCitaController controller = loader.getController();
+		controller.setPanelMedicoController(this); 
+
+		Stage stage = new Stage();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Eliminar Cita");
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
+	}
+	@FXML
 	public void abrirVentanaAddCita(ActionEvent actionEvent) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/CitaAdd.fxml"));
 		Parent root = loader.load();
 
 		CrearCitaController controller = loader.getController();
 		controller.setIdMedico(id_medico);
-		controller.setPanelMedicoController(this); // Pasa la referencia del controlador
+		controller.setPanelMedicoController(this); 
 
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
