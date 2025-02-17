@@ -4,7 +4,6 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,7 +23,7 @@
                             <children>
                                 <AnchorPane layoutX="-58.0" layoutY="-86.0" prefHeight="40.0" prefWidth="214.0" styleClass="bg-color-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <Label layoutX="21.0" layoutY="11.0" text="Hospital Management System" textFill="WHITE">
+                                        <Label layoutX="21.0" layoutY="11.0" text="GESTIÓN SISTEMA MÉDICO" textFill="WHITE">
                                             <font>
                                                 <Font size="13.0" />
                                             </font>
@@ -34,14 +33,13 @@
                                 <Circle fx:id="top_profile" fill="DODGERBLUE" layoutX="1012.0" layoutY="22.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="75.0" />
                                 <Label layoutX="1036.0" layoutY="13.0" text="Active" AnchorPane.rightAnchor="31.0" />
                                 <Circle fill="#24c756" layoutX="1081.0" layoutY="22.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="14.0" />
-                                <Label layoutX="683.0" layoutY="12.0" text="Bienvenido," AnchorPane.rightAnchor="364.0" />
-                                <Label fx:id="top_username" layoutX="743.0" layoutY="11.0" prefHeight="17.0" prefWidth="138.0" text="MarcoMan" AnchorPane.rightAnchor="219.0">
+                                <Label layoutX="653.0" layoutY="12.0" text="Bienvenido," AnchorPane.rightAnchor="385.0" />
+                                <Label fx:id="top_username" layoutX="722.0" layoutY="11.0" prefHeight="19.0" prefWidth="158.0" text="ANTONIO CAMARENA" AnchorPane.rightAnchor="220.0">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="date_time" alignment="CENTER_RIGHT" layoutX="466.0" layoutY="12.0" prefHeight="17.0" prefWidth="187.0" text="MM:DD:YYYY" AnchorPane.rightAnchor="447.0" />
-                                <Label fx:id="current_form" layoutX="233.0" layoutY="11.0" prefHeight="17.0" prefWidth="325.0" styleClass="header-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Dashboard Form" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="11.0">
+                                <Label fx:id="current_form" layoutX="233.0" layoutY="11.0" prefHeight="17.0" prefWidth="325.0" styleClass="header-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="PANEL" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="11.0">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -58,14 +56,14 @@
                         <AnchorPane prefHeight="560.0" prefWidth="214.0" styleClass="bg-color-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" BorderPane.alignment="CENTER">
                             <children>
                                 <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="83.0" layoutY="65.0" size="5em" />
-                                <Label layoutX="23.0" layoutY="85.0" text="Doctor ID:" textFill="WHITE" />
-                                <Label fx:id="nav_adminID" layoutX="83.0" layoutY="84.0" prefHeight="17.0" prefWidth="117.0" text="1" textFill="WHITE">
+                                <Label layoutX="8.0" layoutY="85.0" text="DOCTOR ID:" textFill="WHITE" />
+                                <Label fx:id="nav_adminID" layoutX="81.0" layoutY="84.0" prefHeight="17.0" prefWidth="117.0" text="1" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="21.0" layoutY="110.0" text="NOMBRE" textFill="WHITE" />
-                                <Label fx:id="nav_username" layoutX="83.0" layoutY="109.0" prefHeight="17.0" prefWidth="117.0" text="marcoman" textFill="WHITE">
+                                <Label layoutX="9.0" layoutY="110.0" text="NOMBRE:" textFill="WHITE" />
+                                <Label fx:id="nav_username" layoutX="67.0" layoutY="109.0" prefHeight="19.0" prefWidth="146.0" text="ANTONIO CAMARENA" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
@@ -73,23 +71,18 @@
                                 <Line endX="88.0" layoutX="113.0" layoutY="152.0" startX="-100.0" stroke="WHITE" />
                                 <FontAwesomeIconView fill="WHITE" glyphName="HOSPITAL_ALT" layoutX="60.0" layoutY="522.0" size="10em" AnchorPane.bottomAnchor="20.857139587402344" AnchorPane.leftAnchor="60.0" />
                                 <Label layoutX="13.0" layoutY="162.0" text="Feature" textFill="WHITE" />
-                                <Button fx:id="dashboard_btn" layoutX="7.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Dashboard">
-                                    <graphic>
-                                        <FontAwesomeIconView fill="WHITE" glyphName="DASHBOARD" size="1.5em" />
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="patients_btn" layoutX="7.0" layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="PACIENTES">
+                                <Button fx:id="patients_btn" layoutX="7.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="PACIENTES">
                                     <graphic>
                                         <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="1.5em" />
                                     </graphic>
                                 </Button>
-                                <Button fx:id="appointments_btn" layoutX="7.0" layoutY="292.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Appointments">
+                                <Button fx:id="citas_btn" layoutX="7.0" layoutY="243.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="CITAS">
                                     <graphic>
                                         <FontAwesomeIconView fill="WHITE" glyphName="CLIPBOARD" size="1.5em" />
                                     </graphic>
                                 </Button>
-                                <Label layoutX="13.0" layoutY="342.0" text="Profile" textFill="WHITE" />
-                                <Button fx:id="profile_btn" layoutX="7.0" layoutY="367.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="AJUSTES PERFIL">
+                                <Label layoutX="13.0" layoutY="310.0" text="Profile" textFill="WHITE" />
+                                <Button fx:id="profile_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="AJUSTES PERFIL">
                                     <graphic>
                                         <FontAwesomeIconView fill="WHITE" glyphName="COGS" size="1.5em" />
                                     </graphic>
@@ -102,98 +95,33 @@
                             <children>
                                 <AnchorPane fx:id="dashboard_form" layoutX="161.0" layoutY="112.0" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="156.0" prefWidth="860.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
+                                        <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="149.0" prefWidth="273.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="14.0">
                                             <styleClass>
                                                 <String fx:value="white-bg" />
                                                 <String fx:value="radius" />
                                                 <String fx:value="shadow" />
                                             </styleClass>
-                                            <children>
-                                                <ScrollPane layoutX="23.0" prefHeight="200.0" prefWidth="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                    <content>
-                                                        <AnchorPane prefHeight="153.0" prefWidth="1050.0">
-                                                            <children>
-                                                                <AnchorPane layoutX="31.0" layoutY="20.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css">
-                                                                    <styleClass>
-                                                                        <String fx:value="bg-color-2" />
-                                                                        <String fx:value="radius" />
-                                                                    </styleClass>
-                                                                    <children>
-                                                                        <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="78.0" size="5em" />
-                                                                        <Label fx:id="dashboard_IP" alignment="CENTER_RIGHT" layoutX="92.0" layoutY="17.0" prefHeight="17.0" prefWidth="134.0" text="0" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                        <Label alignment="CENTER" layoutX="75.0" layoutY="77.0" prefHeight="20.0" prefWidth="150.0" text="PACIENTES INACTIVOS" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane layoutX="307.0" layoutY="20.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css">
-                                                                    <styleClass>
-                                                                        <String fx:value="bg-color-2" />
-                                                                        <String fx:value="radius" />
-                                                                    </styleClass>
-                                                                    <children>
-                                                                        <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="78.0" size="5em" />
-                                                                        <Label fx:id="dashboard_TP" alignment="CENTER_RIGHT" layoutX="92.0" layoutY="17.0" prefHeight="17.0" prefWidth="134.0" text="0" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                        <Label alignment="CENTER" layoutX="75.0" layoutY="77.0" prefHeight="17.0" prefWidth="134.0" text="TOTAL PACIENTES" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane layoutX="576.0" layoutY="20.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css">
-                                                                    <styleClass>
-                                                                        <String fx:value="bg-color-2" />
-                                                                        <String fx:value="radius" />
-                                                                    </styleClass>
-                                                                    <children>
-                                                                        <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="78.0" size="5em" />
-                                                                        <Label fx:id="dashboard_AP" alignment="CENTER_RIGHT" layoutX="92.0" layoutY="17.0" prefHeight="17.0" prefWidth="134.0" text="0" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                        <Label alignment="CENTER" layoutX="75.0" layoutY="77.0" prefHeight="17.0" prefWidth="134.0" text="PACIENTES ACTIVOS" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane layoutX="846.0" layoutY="20.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css">
-                                                                    <styleClass>
-                                                                        <String fx:value="bg-color-2" />
-                                                                        <String fx:value="radius" />
-                                                                    </styleClass>
-                                                                    <children>
-                                                                        <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="78.0" size="5em" />
-                                                                        <Label fx:id="dashboard_tA" alignment="CENTER_RIGHT" layoutX="92.0" layoutY="17.0" prefHeight="17.0" prefWidth="134.0" text="0" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                        <Label alignment="CENTER" layoutX="75.0" layoutY="77.0" prefHeight="17.0" prefWidth="134.0" text="Total Appointments" textFill="WHITE">
-                                                                            <font>
-                                                                                <Font size="14.0" />
-                                                                            </font>
-                                                                        </Label>
-                                                                    </children>
-                                                                </AnchorPane>
-                                                            </children>
-                                                        </AnchorPane>
-                                                    </content>
-                                                </ScrollPane>
-                                            </children>
+                                 <children>
+                                                    <AnchorPane layoutX="17.0" layoutY="18.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css">
+                                                        <styleClass>
+                                                            <String fx:value="bg-color-2" />
+                                                            <String fx:value="radius" />
+                                                        </styleClass>
+                                                        <children>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="78.0" size="5em" />
+                                                            <Label fx:id="num_total_pacientes" alignment="CENTER_RIGHT" layoutX="92.0" layoutY="17.0" prefHeight="17.0" prefWidth="134.0" text="0" textFill="WHITE">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Label alignment="CENTER" layoutX="75.0" layoutY="77.0" prefHeight="17.0" prefWidth="134.0" text="NÚMERO PACIENTES" textFill="WHITE">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                        </children>
+                                                    </AnchorPane>
+                                 </children>
                                         </AnchorPane>
                                         <AnchorPane layoutX="13.0" layoutY="192.0" prefHeight="354.0" prefWidth="860.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="192.0">
                                             <styleClass>
@@ -202,21 +130,7 @@
                                                 <String fx:value="shadow" />
                                             </styleClass>
                                             <children>
-                                                <AnchorPane layoutX="463.0" layoutY="14.0" prefHeight="163.0" prefWidth="383.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.bottomAnchor="177.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-                                                    <styleClass>
-                                                        <String fx:value="white-bg" />
-                                                        <String fx:value="shadow" />
-                                                        <String fx:value="radius" />
-                                                    </styleClass>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="463.0" layoutY="211.0" prefHeight="129.0" prefWidth="383.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
-                                                    <styleClass>
-                                                        <String fx:value="white-bg" />
-                                                        <String fx:value="shadow" />
-                                                        <String fx:value="radius" />
-                                                    </styleClass>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="14.0" layoutY="13.0" prefHeight="328.0" prefWidth="433.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="413.0" AnchorPane.topAnchor="13.0">
+                                                <AnchorPane layoutX="14.0" layoutY="13.0" prefHeight="328.0" prefWidth="831.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="13.0">
                                                     <styleClass>
                                                         <String fx:value="white-bg" />
                                                         <String fx:value="shadow" />
@@ -234,7 +148,7 @@
                                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                                             </columnResizePolicy>
                                                         </TableView>
-                                                        <Label layoutX="13.0" layoutY="14.0" styleClass="header-1" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Appointment">
+                                                        <Label layoutX="13.0" layoutY="14.0" styleClass="header-1" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="CITAS">
                                                             <font>
                                                                 <Font size="14.0" />
                                                             </font>
@@ -243,6 +157,40 @@
                                                 </AnchorPane>
                                             </children>
                                         </AnchorPane>
+                              <AnchorPane layoutX="304.0" layoutY="22.0" prefHeight="141.0" prefWidth="522.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css">
+                                 <styleClass>
+                                    <String fx:value="bg-color-2" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="14.0" layoutY="91.0" size="5em" />
+                                    <Label alignment="CENTER" layoutX="221.0" layoutY="20.0" prefHeight="17.0" prefWidth="134.0" text="OPCIONES CITAS" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="citas_add_btn" layoutX="88.0" layoutY="51.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="AÑADIR CITA">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="1.5em" />
+                                       </graphic>
+                                    </Button>
+                                    <Label alignment="CENTER" layoutX="205.0" layoutY="107.0" prefHeight="17.0" prefWidth="134.0" text="CITAS TOTALES:" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="num_citas_totales" alignment="CENTER_RIGHT" layoutX="339.0" layoutY="107.0" prefHeight="20.0" prefWidth="33.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="citas_delete_btn" layoutX="302.0" layoutY="50.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="ELIMINAR CITA">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="1.5em" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
                                     </children>
                                 </AnchorPane>
                             </children>
