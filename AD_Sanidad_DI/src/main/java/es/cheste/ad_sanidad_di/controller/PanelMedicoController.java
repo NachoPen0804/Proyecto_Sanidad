@@ -40,8 +40,6 @@ public class PanelMedicoController {
 	private Button profile_btn;
 	@javafx.fxml.FXML
 	private Button patients_btn;
-	@javafx.fxml.FXML
-	private Button logout_btn;
 	@FXML
 	private TableColumn<Visita, Long> id_tabla;
 	@FXML
@@ -92,6 +90,8 @@ public class PanelMedicoController {
 	private long id_medico;
 	@FXML
 	private TableView tablaPacientes;
+	@FXML
+	private Button cerrarSesion_btn;
 
 
 	@Deprecated
@@ -211,5 +211,25 @@ public class PanelMedicoController {
 
 	public void setNombreMedicoSuperior(String nombre) {
 		nombre_medico_superior.setText(nombre);
+	}
+
+	@FXML
+	public void cerrarSesion(ActionEvent actionEvent) {
+		// Cierra la ventana actual
+		Stage stage = (Stage) cerrarSesion_btn.getScene().getWindow();
+		stage.close();
+
+		try {
+			// Carga la ventana de inicio de sesión
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/Login.fxml"));
+			Parent root = loader.load();
+
+			Stage loginStage = new Stage();
+			loginStage.setScene(new Scene(root));
+			loginStage.setTitle("Inicio de Sesión");
+			loginStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

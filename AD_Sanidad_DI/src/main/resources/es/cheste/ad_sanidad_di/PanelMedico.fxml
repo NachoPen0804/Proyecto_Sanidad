@@ -44,7 +44,7 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="logout_btn" layoutX="897.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" styleClass="btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Salir" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="8.0" />
+                                <Button fx:id="cerrarSesion_btn" layoutX="897.0" layoutY="8.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="79.0" styleClass="btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Salir" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="8.0" />
                             </children>
                             <styleClass>
                                 <String fx:value="white-bg" />
