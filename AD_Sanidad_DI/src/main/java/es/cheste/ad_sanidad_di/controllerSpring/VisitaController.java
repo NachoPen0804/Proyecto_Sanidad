@@ -28,7 +28,7 @@ public class VisitaController {
 			VisitaRepository visitaRepository,
 			PacienteRepository pacienteRepository,
 			MedicoRepository medicoRepository
-	)	 {
+	) {
 		this.visitaRepository = visitaRepository;
 		this.pacienteRepository = pacienteRepository;
 		this.medicoRepository = medicoRepository;
@@ -62,9 +62,10 @@ public class VisitaController {
 
 			return ResponseEntity.ok(visitaRepository.save(visita));
 		} catch (ResponseStatusException e) {
-			throw e; // Retorna el error HTTP directamente
+			throw e;
 		}
 	}
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminarVisita(@PathVariable Long id) {
 		if (!visitaRepository.existsById(id)) {

@@ -1,7 +1,9 @@
 package es.cheste.ad_sanidad_di.controller;
 
 
+import es.cheste.ad_sanidad_di.api.PacienteApiClient;
 import es.cheste.ad_sanidad_di.api.VisitaApiCliente;
+import es.cheste.ad_sanidad_di.model.Paciente;
 import es.cheste.ad_sanidad_di.model.Visita;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -53,6 +55,7 @@ public class PanelMedicoController {
 	private TableColumn<Visita, LocalDate> fecha_tabla;
 
 	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
+	private final PacienteApiClient pacienteApi = new PacienteApiClient();
 	@FXML
 	private Label num_citas_totales;
 	@FXML
@@ -62,21 +65,19 @@ public class PanelMedicoController {
 	@FXML
 	private Button citas_delete_btn;
 	@FXML
-	private TableColumn id_paciente_tabla_panel_paciente;
+	private TableColumn<Paciente, Long> id_paciente_tabla_panel_paciente;
 	@FXML
 	private Button pacientes_delete_btn;
 	@FXML
-	private TableColumn pueblo_tabla;
+	private TableColumn<Paciente, String> pueblo_tabla;
 	@FXML
-	private TableColumn nombre_paciente_tabla_panel_paciente;
+	private TableColumn<Paciente, String> nombre_paciente_tabla_panel_paciente;
 	@FXML
 	private Button citas_add_btn;
 	@FXML
 	private Button pacientes_edit_btn;
 	@FXML
-	private TableColumn apellidos_paciente_tabla_panel_paciente;
-	@FXML
-	private TableView tablaCitas1;
+	private TableColumn<Paciente, String> apellidos_paciente_tabla_panel_paciente;
 	@FXML
 	private Button citas_btn;
 	@FXML
@@ -89,6 +90,8 @@ public class PanelMedicoController {
 	private Label nombre_medico_superior;
 
 	private long id_medico;
+	@FXML
+	private TableView tablaPacientes;
 
 
 	@Deprecated
@@ -116,15 +119,30 @@ public class PanelMedicoController {
 		id_medico_tabla.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMedico().getNombre().toUpperCase() + " " + cellData.getValue().getMedico().getApellidos().toUpperCase()));
 		fecha_tabla.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 
+		id_paciente_tabla_panel_paciente.setCellValueFactory(new PropertyValueFactory<>("id"));
+		nombre_paciente_tabla_panel_paciente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		apellidos_paciente_tabla_panel_paciente.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
+		pueblo_tabla.setCellValueFactory(new PropertyValueFactory<>("pueblo_residencia"));
+		
+		
+		
 
-		cargarDatos();
+
+		cargarDatosCitas();
+		cargarDatosPacientes();
 	}
 
-	private void cargarDatos() {
+	private void cargarDatosCitas() {
 
 		List<Visita> visitas = visitaApi.obtenerVisitas();
 		ObservableList<Visita> visitasObservableList = FXCollections.observableArrayList(visitas);
 		tablaCitas.setItems(visitasObservableList);
+	}
+	
+	private void cargarDatosPacientes() {
+		List<Paciente> pacientes = pacienteApi.obtenerPacientes();
+		ObservableList<Paciente> pacienteObservableList = FXCollections.observableArrayList(pacientes);
+		tablaPacientes.setItems(pacienteObservableList);
 	}
 
 	
@@ -174,7 +192,7 @@ public class PanelMedicoController {
 	}
 
 	public void actualizarTablaCitas() {
-		cargarDatos();
+		cargarDatosCitas();
 	}
 
 	@FXML
