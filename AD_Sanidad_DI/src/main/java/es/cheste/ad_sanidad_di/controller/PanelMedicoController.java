@@ -87,7 +87,7 @@ public class PanelMedicoController {
 	private Label nombre_medico;
 	@FXML
 	private Label nombre_medico_superior;
-	
+
 	private long id_medico;
 
 
@@ -116,7 +116,6 @@ public class PanelMedicoController {
 		id_medico_tabla.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMedico().getNombre().toUpperCase() + " " + cellData.getValue().getMedico().getApellidos().toUpperCase()));
 		fecha_tabla.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 
-		
 
 		cargarDatos();
 	}
@@ -152,13 +151,18 @@ public class PanelMedicoController {
 		Parent root = loader.load();
 
 		CrearCitaController controller = loader.getController();
-		controller.setIdMedico(id_medico); 
+		controller.setIdMedico(id_medico);
+		controller.setPanelMedicoController(this); // Pasa la referencia del controlador
 
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.setTitle("Añadir Cita");
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
+	}
+
+	public void actualizarTablaCitas() {
+		cargarDatos();
 	}
 
 	@FXML

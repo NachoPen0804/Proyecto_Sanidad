@@ -35,6 +35,11 @@ public class CrearCitaController {
 	private final PacienteApiClient pacienteApiClient = new PacienteApiClient();
 	private final VisitaApiCliente visitaApiClient = new VisitaApiCliente();
 	private final MedicoApiClient medicoApiClient = new MedicoApiClient();
+	private PanelMedicoController panelMedicoController;
+
+	public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
+		this.panelMedicoController = panelMedicoController;
+	}
 
 	@javafx.fxml.FXML
 	public void addCita(ActionEvent actionEvent) {
@@ -49,7 +54,6 @@ public class CrearCitaController {
 		try {
 			long pacienteId = Long.parseLong(pacienteIdText);
 			Paciente paciente = pacienteApiClient.obtenerPacientePorId(pacienteId);
-			System.out.println(pacienteId);
 			if (paciente == null) {
 				mostrarError("Paciente no encontrado", "El ID del paciente no existe");
 				return;
@@ -61,15 +65,16 @@ public class CrearCitaController {
 				return;
 			}
 
-			Visita nuevaVisita = new Visita();
-			nuevaVisita.setPaciente(paciente);
-			nuevaVisita.setFecha(fechaCita);
-			nuevaVisita.setMedico(medico);
-
-			
 			visitaApiClient.create(pacienteId, id_medico, fechaCita);
 
 			mostrarInformacion("Cita creada", "La cita ha sido creada exitosamente");
+
+			// Cierra la ventana de creación de citas
+			Stage stage = (Stage) acept_add_cita_btn.getScene().getWindow();
+			stage.close();
+
+			// Actualiza la tabla de citas en PanelMedicoController
+			panelMedicoController.actualizarTablaCitas();
 		} catch (NumberFormatException e) {
 			mostrarError("ID inválido", "El ID del paciente debe ser un número");
 		}
