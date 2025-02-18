@@ -1,3 +1,29 @@
 .bg-color {
     -fx-background-color: linear-gradient(to bottom right, #2496b0, #306090);
 }
+
+.bg-color-paciente {
+    -fx-background-color: linear-gradient(to bottom right, #a31336, #861d2a);
+}
+
+.btn-medic {
+    -fx-background-color: linear-gradient(to bottom right, #188ba7, #306090);
+    -fx-background-radius: 5;
+    -fx-border-color: #fff;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+}
+
+.btn-pacient {
+    -fx-background-color: linear-gradient(to bottom right, #a31336, #861d2a);
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-border-color: #fff;
+    -fx-border-radius: 5;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+}
