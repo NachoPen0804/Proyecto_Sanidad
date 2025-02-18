@@ -107,7 +107,7 @@ public class PanelMedicoController {
 	private Label label_id_perfil;
 	@FXML
 	private Label label_pueblo_hospital_perfil;
-	
+
 	private Medico medicoiniciado;
 
 
@@ -199,10 +199,12 @@ public class PanelMedicoController {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
 	}
+
 	public void setId_medico(long id_medicoLogin) {
 		id_medico_Perfil.setText(String.valueOf(id_medicoLogin));
 	}
-	public void cargarMedico(Medico medico){
+
+	public void cargarMedico(Medico medico) {
 		medicoiniciado = medico;
 		label_nombre_perfil.setText(medico.getNombre());
 		label_apellidos_perfil.setText(medico.getApellidos());
@@ -210,13 +212,11 @@ public class PanelMedicoController {
 		label_nombre_hospital_perfil.setText(medico.getHospital().getNombre());
 		label_pueblo_hospital_perfil.setText(medico.getHospital().getLocalidad());
 	}
-	
-	
 
-	
+
 	@FXML
-	public void editarDatosPerfil(){
-		
+	public void editarDatosPerfil() {
+
 	}
 
 	@FXML
@@ -265,8 +265,9 @@ public class PanelMedicoController {
 		actualizarTablaPacientes();
 		actualizarTablaCitas();
 	}
+
 	@FXML
-	public void editarPerfil(){
+	public void editarPerfil() {
 		panel_view_medicos.setVisible(false);
 		panel_view_pacientes.setVisible(false);
 		panel_perfil.setVisible(true);

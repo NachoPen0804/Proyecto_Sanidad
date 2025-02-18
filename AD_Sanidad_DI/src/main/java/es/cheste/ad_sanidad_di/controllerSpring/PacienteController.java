@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pacientes")
@@ -52,5 +53,11 @@ public class PacienteController {
 					return ResponseEntity.noContent().build();
 				})
 				.orElse(ResponseEntity.notFound().build());
+	}
+
+	@GetMapping("/{id}/password")
+	public ResponseEntity<Paciente> obtenerPacientePorIdYPassword(@PathVariable Long id, @RequestParam String password) {
+		Optional<Paciente> paciente = pacienteRepository.findByIdAndPassword(id, password);
+		return paciente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(401).build());
 	}
 }

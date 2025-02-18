@@ -99,5 +99,14 @@ public class LoginController {
 
 	@javafx.fxml.FXML
 	public void ventanaLoginPaciente(ActionEvent actionEvent) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/LoginPaciente.fxml"));
+			Parent root = loader.load();
+			Stage stage = (Stage) login_paciente_view_boton.getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Login Paciente");
+		} catch (Exception e) {
+			mostrarError("Error", "No se pudo cargar la ventana de login de paciente");
+		}
 	}
 }

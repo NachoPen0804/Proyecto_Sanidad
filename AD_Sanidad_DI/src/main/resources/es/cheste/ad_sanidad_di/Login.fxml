@@ -18,7 +18,7 @@
                 <AnchorPane fx:id="login_form" layoutX="48.0" layoutY="75.0" prefHeight="550.0" prefWidth="330.0" styleClass="bg-color" stylesheets="@../ad_sanidad_di/styles/LoginDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
                   <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="139.0" layoutY="121.0" selectionFill="RED" size="70" wrappingWidth="52.79998779296875" />
-                        <Label layoutX="141.0" layoutY="133.0" text="Login" textFill="WHITE">
+                        <Label layoutX="127.0" layoutY="131.0" text="MEDICO" textFill="WHITE">
                             <font>
                                 <Font name="Tahoma" size="20.0" />
                             </font>

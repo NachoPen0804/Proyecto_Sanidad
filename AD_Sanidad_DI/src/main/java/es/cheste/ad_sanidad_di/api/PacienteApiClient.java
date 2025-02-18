@@ -38,6 +38,24 @@ public class PacienteApiClient {
 			return Collections.emptyList();
 		}
 	}
+	public Paciente verificarPaciente(long id, String password) {
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(baseUrl + "/" + id + "/password?password=" + password))
+				.GET()
+				.build();
+
+		try {
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			if (response.statusCode() == 200) {
+				return mapper.readValue(response.body(), Paciente.class);
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public void create(Paciente paciente) {
 		try {

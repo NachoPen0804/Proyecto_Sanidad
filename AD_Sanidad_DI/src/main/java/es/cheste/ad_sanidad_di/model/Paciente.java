@@ -24,6 +24,18 @@ public class Paciente {
 	@Column(name = "pueblo_residencia")
 	String pueblo_residencia;
 
+	@Column(name = "password", nullable = false)
+	private String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+
 	@Override
 	public String toString() {
 		return "Paciente{" +
@@ -79,11 +91,12 @@ public class Paciente {
 		return Objects.hash(id, nombre, apellidos, pueblo_residencia);
 	}
 
-	public Paciente(long id, String nombre, String apellidos, String pueblo_residencia) {
+	public Paciente(long id, String nombre, String apellidos, String pueblo_residencia, String password) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.pueblo_residencia = pueblo_residencia;
+		this.password = password;
 	}
 
 	public Paciente() {
