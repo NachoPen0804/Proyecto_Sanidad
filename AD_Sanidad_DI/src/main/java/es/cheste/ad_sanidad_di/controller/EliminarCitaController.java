@@ -6,18 +6,21 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class EliminarCitaController {
+
+	private final VisitaApiCliente visitaApiClient = new VisitaApiCliente();
+	private PanelMedicoController panelMedicoController;
+	@javafx.fxml.FXML
+	private AnchorPane login_form;
 	@javafx.fxml.FXML
 	private Button cancel_delete_cita_btn;
 	@javafx.fxml.FXML
 	private Button acept_delete_cita_btn;
 	@javafx.fxml.FXML
 	private TextField id_cita;
-
-	private final VisitaApiCliente visitaApiClient = new VisitaApiCliente();
-	private PanelMedicoController panelMedicoController;
 
 	public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
 		this.panelMedicoController = panelMedicoController;
@@ -78,5 +81,13 @@ public class EliminarCitaController {
 		alert.setHeaderText(null);
 		alert.setContentText(mensaje);
 		alert.showAndWait();
+	}
+
+	@Deprecated
+	public void cancelDeletePaciente(ActionEvent actionEvent) {
+	}
+
+	@Deprecated
+	public void deletePaciente(ActionEvent actionEvent) {
 	}
 }

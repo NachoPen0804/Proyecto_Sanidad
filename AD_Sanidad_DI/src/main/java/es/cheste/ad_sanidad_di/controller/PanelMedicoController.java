@@ -123,9 +123,6 @@ public class PanelMedicoController {
 		nombre_paciente_tabla_panel_paciente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		apellidos_paciente_tabla_panel_paciente.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
 		pueblo_tabla.setCellValueFactory(new PropertyValueFactory<>("pueblo_residencia"));
-		
-		
-		
 
 
 		cargarDatosCitas();
@@ -138,36 +135,46 @@ public class PanelMedicoController {
 		ObservableList<Visita> visitasObservableList = FXCollections.observableArrayList(visitas);
 		tablaCitas.setItems(visitasObservableList);
 	}
-	
+
 	private void cargarDatosPacientes() {
 		List<Paciente> pacientes = pacienteApi.obtenerPacientes();
 		ObservableList<Paciente> pacienteObservableList = FXCollections.observableArrayList(pacientes);
 		tablaPacientes.setItems(pacienteObservableList);
 	}
 
-	
 
 	@FXML
-	public void abrirVentanaAddPaciente(ActionEvent actionEvent) {
+	public void abrirVentanaAddPaciente(ActionEvent actionEvent) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PacienteAdd.fxml"));
+		Parent root = loader.load();
+
+		Stage stage = new Stage();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Eliminar Paciente");
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
 	}
 
-	@FXML
-	public void mostrarPacientes(ActionEvent actionEvent) {
-		panel_view_medicos.setVisible(false);
-		panel_view_pacientes.setVisible(true);
-	}
 
 	@FXML
-	public void abrirVentanaDeletePaciente(ActionEvent actionEvent) {
+	public void abrirVentanaDeletePaciente(ActionEvent actionEvent) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PacienteDelete.fxml"));
+		Parent root = loader.load();
+
+		Stage stage = new Stage();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Eliminar Paciente");
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
 	}
 
 	@FXML
 	public void abrirVentanaDeleteCita(ActionEvent actionEvent) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/CitaDelete.fxml"));
 		Parent root = loader.load();
-		
+
 		EliminarCitaController controller = loader.getController();
-		controller.setPanelMedicoController(this); 
+		controller.setPanelMedicoController(this);
 
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
@@ -175,6 +182,7 @@ public class PanelMedicoController {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
 	}
+
 	@FXML
 	public void abrirVentanaAddCita(ActionEvent actionEvent) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/CitaAdd.fxml"));
@@ -182,7 +190,7 @@ public class PanelMedicoController {
 
 		CrearCitaController controller = loader.getController();
 		controller.setIdMedico(id_medico);
-		controller.setPanelMedicoController(this); 
+		controller.setPanelMedicoController(this);
 
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
@@ -195,14 +203,38 @@ public class PanelMedicoController {
 		cargarDatosCitas();
 	}
 
+	public void actualizarTablaPacientes() {
+		cargarDatosPacientes();
+	}
+
 	@FXML
-	public void abrirVentanaEditPaciente(ActionEvent actionEvent) {
+	public void abrirVentanaEditPaciente(ActionEvent actionEvent) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PacienteEdit.fxml"));
+		Parent root = loader.load();
+
+		Stage stage = new Stage();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Eliminar Paciente");
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
+
+
+	}
+
+	@FXML
+	public void mostrarPacientes(ActionEvent actionEvent) {
+		panel_view_medicos.setVisible(false);
+		panel_view_pacientes.setVisible(true);
+		actualizarTablaPacientes();
+		actualizarTablaCitas();
 	}
 
 	@FXML
 	public void mostrarCitas(ActionEvent actionEvent) {
 		panel_view_medicos.setVisible(true);
 		panel_view_pacientes.setVisible(false);
+		actualizarTablaPacientes();
+		actualizarTablaCitas();
 	}
 
 	public void setNombreMedico(String nombre) {
@@ -215,12 +247,10 @@ public class PanelMedicoController {
 
 	@FXML
 	public void cerrarSesion(ActionEvent actionEvent) {
-		// Cierra la ventana actual
 		Stage stage = (Stage) cerrarSesion_btn.getScene().getWindow();
 		stage.close();
 
 		try {
-			// Carga la ventana de inicio de sesión
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/Login.fxml"));
 			Parent root = loader.load();
 

@@ -32,4 +32,25 @@ public class PacienteController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity<Paciente> actualizarPaciente(@PathVariable Long id, @RequestBody Paciente paciente) {
+		return pacienteRepository.findById(id)
+				.map(pacienteExistente -> {
+					pacienteExistente.setNombre(paciente.getNombre());
+					pacienteExistente.setApellidos(paciente.getApellidos());
+					pacienteExistente.setPueblo_residencia(paciente.getPueblo_residencia());
+					Paciente pacienteActualizado = pacienteRepository.save(pacienteExistente);
+					return ResponseEntity.ok(pacienteActualizado);
+				})
+				.orElse(ResponseEntity.notFound().build());
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Object> deletePaciente(@PathVariable Long id) {
+		return pacienteRepository.findById(id)
+				.map(paciente -> {
+					pacienteRepository.delete(paciente);
+					return ResponseEntity.noContent().build();
+				})
+				.orElse(ResponseEntity.notFound().build());
+	}
 }
