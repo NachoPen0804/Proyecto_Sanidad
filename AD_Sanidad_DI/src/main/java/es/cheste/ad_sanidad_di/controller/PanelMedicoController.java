@@ -3,6 +3,7 @@ package es.cheste.ad_sanidad_di.controller;
 
 import es.cheste.ad_sanidad_di.api.PacienteApiClient;
 import es.cheste.ad_sanidad_di.api.VisitaApiCliente;
+import es.cheste.ad_sanidad_di.model.Medico;
 import es.cheste.ad_sanidad_di.model.Paciente;
 import es.cheste.ad_sanidad_di.model.Visita;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,8 +33,6 @@ public class PanelMedicoController {
 	private AnchorPane main_form;
 	@javafx.fxml.FXML
 	private Circle top_profile;
-	@javafx.fxml.FXML
-	private Label nav_adminID;
 	@javafx.fxml.FXML
 	private Label current_form;
 	@javafx.fxml.FXML
@@ -92,6 +91,24 @@ public class PanelMedicoController {
 	private TableView tablaPacientes;
 	@FXML
 	private Button cerrarSesion_btn;
+	@FXML
+	private Label label_nombre_hospital_perfil;
+	@FXML
+	private Label label_apellidos_perfil;
+	@FXML
+	private AnchorPane panel_perfil;
+	@FXML
+	private Button edit_profile_btn;
+	@FXML
+	private Label label_nombre_perfil;
+	@FXML
+	private Label id_medico_Perfil;
+	@FXML
+	private Label label_id_perfil;
+	@FXML
+	private Label label_pueblo_hospital_perfil;
+	
+	private Medico medicoiniciado;
 
 
 	@Deprecated
@@ -182,6 +199,25 @@ public class PanelMedicoController {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
 	}
+	public void setId_medico(long id_medicoLogin) {
+		id_medico_Perfil.setText(String.valueOf(id_medicoLogin));
+	}
+	public void cargarMedico(Medico medico){
+		medicoiniciado = medico;
+		label_nombre_perfil.setText(medico.getNombre());
+		label_apellidos_perfil.setText(medico.getApellidos());
+		label_id_perfil.setText(String.valueOf(medico.getId()));
+		label_nombre_hospital_perfil.setText(medico.getHospital().getNombre());
+		label_pueblo_hospital_perfil.setText(medico.getHospital().getLocalidad());
+	}
+	
+	
+
+	
+	@FXML
+	public void editarDatosPerfil(){
+		
+	}
 
 	@FXML
 	public void abrirVentanaAddCita(ActionEvent actionEvent) throws IOException {
@@ -225,13 +261,22 @@ public class PanelMedicoController {
 	public void mostrarPacientes(ActionEvent actionEvent) {
 		panel_view_medicos.setVisible(false);
 		panel_view_pacientes.setVisible(true);
+		panel_perfil.setVisible(false);
 		actualizarTablaPacientes();
 		actualizarTablaCitas();
+	}
+	@FXML
+	public void editarPerfil(){
+		panel_view_medicos.setVisible(false);
+		panel_view_pacientes.setVisible(false);
+		panel_perfil.setVisible(true);
+
 	}
 
 	@FXML
 	public void mostrarCitas(ActionEvent actionEvent) {
 		panel_view_medicos.setVisible(true);
+		panel_perfil.setVisible(false);
 		panel_view_pacientes.setVisible(false);
 		actualizarTablaPacientes();
 		actualizarTablaCitas();

@@ -4,8 +4,12 @@ import es.cheste.ad_sanidad_di.model.Medico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
+	Optional<Medico> findByIdAndPassword(Long id, String password);
+
 	/*
 	save(S entity): Guarda una entidad.
 	

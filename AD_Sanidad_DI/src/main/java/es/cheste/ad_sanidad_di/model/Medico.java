@@ -23,6 +23,17 @@ public class Medico {
 	@JoinColumn(name = "id_hospital", referencedColumnName = "id")
 	Hospital hospital;
 
+	@Column(name = "password", nullable = false)
+	String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		return "Medico{" +

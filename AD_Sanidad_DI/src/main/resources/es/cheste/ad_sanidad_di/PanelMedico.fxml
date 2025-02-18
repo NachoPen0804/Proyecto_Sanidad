@@ -57,7 +57,7 @@
                             <children>
                                 <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="83.0" layoutY="65.0" size="5em" />
                                 <Label layoutX="8.0" layoutY="85.0" text="DOCTOR ID:" textFill="WHITE" />
-                                <Label fx:id="nav_adminID" layoutX="81.0" layoutY="84.0" prefHeight="17.0" prefWidth="117.0" text="1" textFill="WHITE">
+                                <Label fx:id="id_medico_Perfil" layoutX="81.0" layoutY="84.0" prefHeight="17.0" prefWidth="117.0" text="1" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
@@ -82,7 +82,7 @@
                                     </graphic>
                                 </Button>
                                 <Label layoutX="13.0" layoutY="310.0" text="Profile" textFill="WHITE" />
-                                <Button fx:id="profile_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="AJUSTES PERFIL">
+                                <Button fx:id="profile_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" onAction="#editarPerfil" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-2" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="AJUSTES PERFIL">
                                     <graphic>
                                         <FontAwesomeIconView fill="WHITE" glyphName="COGS" size="1.5em" />
                                     </graphic>
@@ -316,7 +316,7 @@
                                                 <Font size="20.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="label_nombre_perfil1" alignment="CENTER" layoutX="302.0" layoutY="120.0" prefHeight="25.0" prefWidth="152.0" text="*ID MEDICO*" textFill="WHITE">
+                                          <Label fx:id="label_id_perfil" alignment="CENTER" layoutX="302.0" layoutY="120.0" prefHeight="25.0" prefWidth="152.0" text="*ID MEDICO*" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
@@ -327,7 +327,7 @@
                                                 <Font size="20.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="label_nombre_hospital_perfil1" alignment="CENTER" layoutX="418.0" layoutY="332.0" prefHeight="26.0" prefWidth="293.0" text="*PUEBLO HOSPITAL*" textFill="WHITE">
+                                          <Label fx:id="label_pueblo_hospital_perfil" alignment="CENTER" layoutX="418.0" layoutY="332.0" prefHeight="26.0" prefWidth="293.0" text="*PUEBLO HOSPITAL*" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="17.0" />
                                              </font>

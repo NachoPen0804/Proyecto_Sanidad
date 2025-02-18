@@ -1,6 +1,8 @@
 package es.cheste.ad_sanidad_di.controller;
 
+import es.cheste.ad_sanidad_di.api.MedicoApiClient;
 import es.cheste.ad_sanidad_di.api.UsuarioApiClient;
+import es.cheste.ad_sanidad_di.model.Medico;
 import es.cheste.ad_sanidad_di.model.Usuario;
 import es.cheste.ad_sanidad_di.repository.UsuarioRepository;
 import es.cheste.ad_sanidad_di.service.UsuarioServicie;
@@ -29,23 +31,30 @@ public class LoginController {
 	private Button login_boton;
 	@javafx.fxml.FXML
 	private PasswordField login_contraseña;
-	
+	@javafx.fxml.FXML
+	private Button login_paciente_view_boton;
+
 	@javafx.fxml.FXML
 	public void loginAccount(ActionEvent actionEvent) {
-		String usuario = login_usuario.getText();
+		String idStr = login_usuario.getText();
 		String contraseña = login_contraseña.getText();
 
-		if (usuario.isEmpty() || contraseña.isEmpty()) {
+		if (idStr.isEmpty() || contraseña.isEmpty()) {
 			mostrarError("Campos vacíos", "Por favor complete todos los campos");
 			return;
 		}
 
-		UsuarioApiClient cliente = new UsuarioApiClient();
-		Usuario usuarioEncontrado = cliente.verificarUsuario(usuario, contraseña);
-		if (usuarioEncontrado != null) {
-		    abrirVentanaPrincipal(usuarioEncontrado.getNombre());
-		} else {
-		    mostrarError("Credenciales incorrectas", "Usuario o contraseña inválidos");
+		try {
+			long id = Long.parseLong(idStr);
+			MedicoApiClient cliente = new MedicoApiClient();
+			Medico medicoEncontrado = cliente.verificarMedico(id, contraseña);
+			if (medicoEncontrado != null) {
+				abrirVentanaPrincipal( medicoEncontrado);
+			} else {
+				mostrarError("Credenciales incorrectas", "ID o contraseña inválidos");
+			}
+		} catch (NumberFormatException e) {
+			mostrarError("Formato incorrecto", "El ID debe ser un número");
 		}
 	}
 
@@ -62,14 +71,16 @@ public class LoginController {
 		}
 	}
 
-	private void abrirVentanaPrincipal(String nombreUsuario) {
+	private void abrirVentanaPrincipal( Medico medico) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PanelMedico.fxml"));
 			Parent root = loader.load();
 
 			PanelMedicoController controller = loader.getController();
-			controller.setNombreMedico(nombreUsuario);
-			controller.setNombreMedicoSuperior(nombreUsuario);
+			controller.setNombreMedico(medico.getNombre());
+			controller.setNombreMedicoSuperior(medico.getNombre());
+			controller.setId_medico(medico.getId());
+			controller.cargarMedico(medico);
 			Stage stage = (Stage) login_boton.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setTitle("Sistema Hospitalario");
@@ -84,5 +95,9 @@ public class LoginController {
 		alert.setHeaderText(null);
 		alert.setContentText(mensaje);
 		alert.showAndWait();
+	}
+
+	@javafx.fxml.FXML
+	public void ventanaLoginPaciente(ActionEvent actionEvent) {
 	}
 }
