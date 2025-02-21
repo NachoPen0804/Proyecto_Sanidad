@@ -89,11 +89,19 @@ public class Medico {
 		return Objects.hash(id, nombre, apellidos, hospital);
 	}
 
-	public Medico(long id, String nombre, String apellidos, Hospital hospital) {
+	public Medico (String nombre, String apellidos, Hospital hospital, String password) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.hospital = hospital;
+		this.password = password;
+	}
+
+	public Medico(long id, String nombre, String apellidos, Hospital hospital, String password) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.hospital = hospital;
+		this.password = password;
 	}
 
 	public Medico() {

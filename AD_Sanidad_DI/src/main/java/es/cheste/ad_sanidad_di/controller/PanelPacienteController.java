@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -55,9 +56,10 @@ public class PanelPacienteController {
 	private Paciente paciente;
 
 	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
-	
+    @FXML
+    private Circle top_profile;
 
-	public void cargarPaciente(Paciente pacienteLogin) {
+    public void cargarPaciente(Paciente pacienteLogin) {
 		this.paciente = pacienteLogin;
 		setNombrePaciente(pacienteLogin.getNombre());
 		setIdPaciente(pacienteLogin.getId());

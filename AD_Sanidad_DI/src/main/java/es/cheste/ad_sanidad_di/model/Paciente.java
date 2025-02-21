@@ -91,6 +91,13 @@ public class Paciente {
 		return Objects.hash(id, nombre, apellidos, pueblo_residencia);
 	}
 
+	public Paciente(String nombre, String apellidos, String pueblo_residencia, String password) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.pueblo_residencia = pueblo_residencia;
+		this.password = password;
+	}
+
 	public Paciente(long id, String nombre, String apellidos, String pueblo_residencia, String password) {
 		this.id = id;
 		this.nombre = nombre;

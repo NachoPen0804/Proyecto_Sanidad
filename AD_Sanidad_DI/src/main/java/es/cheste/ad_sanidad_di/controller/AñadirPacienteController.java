@@ -32,7 +32,7 @@ public class AñadirPacienteController {
 		this.panelMedicoController = panelMedicoController;
 	}
 
-	@javafx.fxml.FXML
+	@Deprecated
 	public void addPaciente(ActionEvent actionEvent) {
 		String nombre = paciente_nombre_text.getText();
 		String apellidos = paciente_apellidos_text.getText();
@@ -57,7 +57,7 @@ public class AñadirPacienteController {
 		}
 	}
 
-	@javafx.fxml.FXML
+	@Deprecated
 	public void cancelAddPaciente(ActionEvent actionEvent) {
 		Stage stage = (Stage) cancel_add_paciente_btn.getScene().getWindow();
 		stage.close();
@@ -70,5 +70,13 @@ public class AñadirPacienteController {
 		alert.setHeaderText(null);
 		alert.setContentText(mensaje);
 		alert.showAndWait();
+	}
+
+	@javafx.fxml.FXML
+	public void addCita(ActionEvent actionEvent) {
+	}
+
+	@javafx.fxml.FXML
+	public void cancelAddCita(ActionEvent actionEvent) {
 	}
 }

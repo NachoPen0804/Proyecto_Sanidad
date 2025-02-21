@@ -46,6 +46,11 @@ public class Hospital {
 		this.localidad = localidad;
 	}
 
+	public Hospital(String nombre, String localidad) {
+		this.nombre = nombre;
+		this.localidad = localidad;
+	}
+
 	public Hospital(long id, String nombre, String localidad) {
 		this.id = id;
 		this.nombre = nombre;

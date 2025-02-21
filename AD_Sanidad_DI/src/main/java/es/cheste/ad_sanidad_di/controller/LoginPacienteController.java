@@ -73,6 +73,15 @@ public class LoginPacienteController {
 
 	@javafx.fxml.FXML
 	public void loginShowPassword(ActionEvent actionEvent) {
+		if (login_checkBox.isSelected()) {
+			login_showPassword.setText(login_contraseña.getText());
+			login_showPassword.setVisible(true);
+			login_contraseña.setVisible(false);
+		} else {
+			login_contraseña.setText(login_showPassword.getText());
+			login_contraseña.setVisible(true);
+			login_showPassword.setVisible(false);
+		}
 	}
 
 	@javafx.fxml.FXML

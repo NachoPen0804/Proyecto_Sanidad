@@ -46,8 +46,11 @@ public class EliminarPacienteController {
 
 			pacienteApiClient.eliminarPaciente(id);
 			mostrarInformacion("Paciente eliminado", "El paciente ha sido eliminado exitosamente");
+
 			Stage stage = (Stage) acept_delete_paciente_btn.getScene().getWindow();
 			stage.close();
+
+			panelMedicoController.actualizarTablaPacientes();
 		} catch (NumberFormatException e) {
 			mostrarError("ID inválido", "El ID del paciente debe ser un número");
 		} catch (RuntimeException e) {

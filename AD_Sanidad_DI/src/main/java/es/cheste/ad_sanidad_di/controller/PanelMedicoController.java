@@ -178,6 +178,9 @@ public class PanelMedicoController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PacienteDelete.fxml"));
 		Parent root = loader.load();
 
+		EliminarPacienteController controller = loader.getController();
+		controller.setPanelMedicoController(this);
+
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.setTitle("Eliminar Paciente");
@@ -225,7 +228,7 @@ public class PanelMedicoController {
 		Parent root = loader.load();
 
 		CrearCitaController controller = loader.getController();
-		controller.setIdMedico(id_medico);
+		controller.setIdMedico(this.id_medico);
 		controller.setPanelMedicoController(this);
 
 		Stage stage = new Stage();

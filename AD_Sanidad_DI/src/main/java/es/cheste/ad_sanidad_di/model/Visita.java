@@ -59,6 +59,12 @@ public class Visita {
 		this.medico = medico;
 	}
 
+	public Visita(Paciente paciente, Medico medico, LocalDate fecha) {
+		this.paciente = paciente;
+		this.medico = medico;
+		this.fecha = fecha;
+	}
+
 	public Visita(long id, Paciente paciente, Medico medico, LocalDate fecha) {
 		this.id = id;
 		this.paciente = paciente;

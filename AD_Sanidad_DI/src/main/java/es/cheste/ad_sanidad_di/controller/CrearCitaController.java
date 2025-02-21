@@ -18,17 +18,9 @@ import java.time.LocalDate;
 
 public class CrearCitaController {
 	@javafx.fxml.FXML
-	private TextField paciente_cita_text;
-	@javafx.fxml.FXML
 	private TextField login_showPassword;
 	@javafx.fxml.FXML
-	private Button acept_add_cita_btn;
-	@javafx.fxml.FXML
 	private AnchorPane login_form;
-	@javafx.fxml.FXML
-	private Button cancel_add_cita_btn;
-	@javafx.fxml.FXML
-	private DatePicker fecha_cita_add;
 
 	private long id_medico;
 
@@ -36,6 +28,14 @@ public class CrearCitaController {
 	private final VisitaApiCliente visitaApiClient = new VisitaApiCliente();
 	private final MedicoApiClient medicoApiClient = new MedicoApiClient();
 	private PanelMedicoController panelMedicoController;
+	@javafx.fxml.FXML
+	private TextField paciente_cita_text;
+	@javafx.fxml.FXML
+	private Button acept_add_cita_btn;
+	@javafx.fxml.FXML
+	private Button cancel_add_cita_btn;
+	@javafx.fxml.FXML
+	private DatePicker fecha_cita_add;
 
 	public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
 		this.panelMedicoController = panelMedicoController;

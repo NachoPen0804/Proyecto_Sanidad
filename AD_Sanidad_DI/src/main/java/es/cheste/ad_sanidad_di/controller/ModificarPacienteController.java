@@ -34,8 +34,8 @@ public class ModificarPacienteController {
 		this.panelMedicoController = panelMedicoController;
 	}
 
-	@javafx.fxml.FXML
-	public void modificarPaciente(ActionEvent actionEvent) {
+	@Deprecated
+    public void modificarPaciente(ActionEvent actionEvent) {
 		String idText = paciente_id_text.getText();
 		String nombre = paciente_nombre_text.getText();
 		String apellidos = paciente_apellidos_text.getText();
@@ -72,7 +72,7 @@ public class ModificarPacienteController {
 		}
 	}
 
-	@javafx.fxml.FXML
+	@Deprecated
 	public void cancerarModificarPaciente(ActionEvent actionEvent) {
 		Stage stage = (Stage) cancel_edit_paciente_btn.getScene().getWindow();
 		stage.close();
@@ -92,5 +92,13 @@ public class ModificarPacienteController {
 		alert.setHeaderText(null);
 		alert.setContentText(mensaje);
 		alert.showAndWait();
+	}
+
+	@javafx.fxml.FXML
+	public void addCita(ActionEvent actionEvent) {
+	}
+
+	@javafx.fxml.FXML
+	public void cancelAddCita(ActionEvent actionEvent) {
 	}
 }

@@ -33,6 +33,8 @@ public class LoginController {
 	private PasswordField login_contraseña;
 	@javafx.fxml.FXML
 	private Button login_paciente_view_boton;
+	@javafx.fxml.FXML
+	private Button register_boton;
 
 	@javafx.fxml.FXML
 	public void loginAccount(ActionEvent actionEvent) {
@@ -108,5 +110,9 @@ public class LoginController {
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana de login de paciente");
 		}
+	}
+
+	@javafx.fxml.FXML
+	public void registerAccount(ActionEvent actionEvent) {
 	}
 }
