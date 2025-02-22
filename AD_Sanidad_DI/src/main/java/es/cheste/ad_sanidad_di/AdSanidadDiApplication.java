@@ -19,24 +19,30 @@ public class AdSanidadDiApplication {
 		Application.launch(JavaFxApp.class, args);
 		
 	}
-	
+
 	@Bean
 	public CommandLineRunner CargarUsuariosMedicosHospitales(UsuarioRepository repositoryUsers, MedicoRepository repositoryMedic, HospitalRepository repositoryHospitals, PacienteRepository repositoryPacients, VisitaRepository repositoryVisitas) {
 		return (args) -> {
 			repositoryUsers.save(new Usuario("admin", "1234"));
 			repositoryUsers.save(new Usuario("user", "user123"));
 
-			Hospital hospital = new Hospital("La Prueba", "Cheste");
-			repositoryHospitals.save(hospital);
+			String hospitalNombre = "La Prueba";
+			if (!repositoryHospitals.existsByNombre(hospitalNombre)) {
+				Hospital hospital = new Hospital(hospitalNombre, "Cheste");
+				repositoryHospitals.save(hospital);
 
-			Medico medico = new Medico("Pablo", "Prueba Prueba", hospital, "prueba");
-			repositoryMedic.save(medico);
+				Medico medico = new Medico("Pablo", "Prueba Prueba", hospital, "prueba");
+				repositoryMedic.save(medico);
 
-			Paciente paciente = new Paciente("Pedro", "Prueba Prueba", "Cheste", "prueba");
-			repositoryPacients.save(paciente);
+				Paciente paciente = new Paciente("Pedro", "Prueba Prueba", "Cheste", "prueba");
+				repositoryPacients.save(paciente);
 
-			repositoryVisitas.save(new Visita(paciente, medico, LocalDate.of(2025,2,22)));
-
+				repositoryVisitas.save(new Visita(paciente, medico, LocalDate.of(2025, 2, 22)));
+			} else {
+				System.out.println("El hospital con el nombre " + hospitalNombre + " ya existe.");
+			}
+		
 		};
+		
 	}
 }

@@ -18,28 +18,34 @@
                   <Font name="Tahoma" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_nombre_text" layoutX="39.0" layoutY="134.0" prefHeight="30.0" prefWidth="183.0" promptText="NOMBRE" />
+            <TextField fx:id="paciente_nombre_text" layoutX="28.0" layoutY="134.0" prefHeight="30.0" prefWidth="206.0" promptText="NOMBRE" />
             <TextField fx:id="login_showPassword" layoutX="39.0" layoutY="213.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" visible="false">
                <styleClass>
                   <String fx:value="textfield-1" />
                   <String fx:value="white-bg" />
                </styleClass>
             </TextField>
-            <Button fx:id="acept_add_paciente_btn" layoutX="329.0" layoutY="299.0" mnemonicParsing="false" onAction="#addCita" prefHeight="40.0" prefWidth="161.0" text="ACEPTAR" />
-            <Button fx:id="cancel_add_paciente_btn" layoutX="86.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddCita" prefHeight="40.0" prefWidth="161.0" text="CANCELAR" />
+            <Button fx:id="acept_add_paciente_btn" layoutX="307.0" layoutY="299.0" mnemonicParsing="false" onAction="#addPaciente" prefHeight="40.0" prefWidth="161.0" text="ACEPTAR" />
+            <Button fx:id="cancel_add_paciente_btn" layoutX="73.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddPaciente" prefHeight="40.0" prefWidth="161.0" text="CANCELAR" />
             <Label layoutX="95.0" layoutY="105.0" text="NOMBRE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_apellidos_text" layoutX="318.0" layoutY="134.0" prefHeight="30.0" prefWidth="183.0" promptText="APELLIDOS" />
+            <TextField fx:id="paciente_apellidos_text" layoutX="308.0" layoutY="134.0" prefHeight="30.0" prefWidth="206.0" promptText="APELLIDOS" />
             <Label layoutX="364.0" layoutY="105.0" text="APELLIDOS" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_pueblo_text" layoutX="171.0" layoutY="213.0" prefHeight="30.0" prefWidth="206.0" promptText="PUEBLO RESIDENCIA" />
-            <Label layoutX="188.0" layoutY="183.0" text="PUEBLO RESIDENCIA" textFill="WHITE">
+            <TextField fx:id="paciente_pueblo_text" layoutX="28.0" layoutY="213.0" prefHeight="30.0" prefWidth="206.0" promptText="PUEBLO RESIDENCIA" />
+            <Label layoutX="45.0" layoutY="183.0" text="PUEBLO RESIDENCIA" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="paciente_password" layoutX="307.0" layoutY="213.0" prefHeight="30.0" prefWidth="206.0" promptText="CONTRASEÑA" />
+            <Label layoutX="355.0" layoutY="183.0" text="CONTRASEÑA" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
