@@ -27,18 +27,25 @@ public class AñadirPacienteController {
 	private final PacienteApiClient pacienteApiClient = new PacienteApiClient();
 	
 	private PanelMedicoController panelMedicoController;
+	@javafx.fxml.FXML
+	private TextField paciente_password;
 
 	public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
 		this.panelMedicoController = panelMedicoController;
 	}
 
-	@Deprecated
+	@javafx.fxml.FXML
 	public void addPaciente(ActionEvent actionEvent) {
 		String nombre = paciente_nombre_text.getText();
 		String apellidos = paciente_apellidos_text.getText();
 		String pueblo = paciente_pueblo_text.getText();
+		String password = paciente_password.getText();
+		if (paciente_password.getText().isEmpty()) {
+			password = "defaultPassword";
+		}
 
 		if (nombre.isEmpty() || apellidos.isEmpty() || pueblo.isEmpty()) {
+			mostrarInformacion("Error", "Todos los campos son obligatorios.");
 			return;
 		}
 
@@ -46,6 +53,7 @@ public class AñadirPacienteController {
 		paciente.setNombre(nombre);
 		paciente.setApellidos(apellidos);
 		paciente.setPueblo_residencia(pueblo);
+		paciente.setPassword(password); 
 
 		try {
 			pacienteApiClient.crearPaciente(paciente);
@@ -54,10 +62,11 @@ public class AñadirPacienteController {
 			Stage stage = (Stage) acept_add_paciente_btn.getScene().getWindow();
 			stage.close();
 		} catch (RuntimeException e) {
+			mostrarInformacion("Error", "No se pudo añadir el paciente: " + e.getMessage());
 		}
 	}
 
-	@Deprecated
+	@javafx.fxml.FXML
 	public void cancelAddPaciente(ActionEvent actionEvent) {
 		Stage stage = (Stage) cancel_add_paciente_btn.getScene().getWindow();
 		stage.close();
@@ -72,11 +81,5 @@ public class AñadirPacienteController {
 		alert.showAndWait();
 	}
 
-	@javafx.fxml.FXML
-	public void addCita(ActionEvent actionEvent) {
-	}
 
-	@javafx.fxml.FXML
-	public void cancelAddCita(ActionEvent actionEvent) {
-	}
 }

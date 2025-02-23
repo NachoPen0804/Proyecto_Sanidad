@@ -1,6 +1,12 @@
 package es.cheste.ad_sanidad_di.controller;
 
 
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
 import es.cheste.ad_sanidad_di.api.PacienteApiClient;
 import es.cheste.ad_sanidad_di.api.VisitaApiCliente;
 import es.cheste.ad_sanidad_di.model.Medico;
@@ -24,6 +30,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -88,7 +96,7 @@ public class PanelMedicoController {
 
 	private long id_medico;
 	@FXML
-	private TableView tablaPacientes;
+	private TableView<Paciente> tablaPacientes;
 	@FXML
 	private Button cerrarSesion_btn;
 	@FXML
@@ -109,6 +117,8 @@ public class PanelMedicoController {
 	private Label label_pueblo_hospital_perfil;
 
 	private Medico medicoiniciado;
+	@FXML
+	private Button imprimir_btn;
 
 
 	@Deprecated
@@ -165,9 +175,12 @@ public class PanelMedicoController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PacienteAdd.fxml"));
 		Parent root = loader.load();
 
+		AñadirPacienteController controller = loader.getController();
+		controller.setPanelMedicoController(this);
+
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
-		stage.setTitle("Eliminar Paciente");
+		stage.setTitle("Añadir Paciente");
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
 	}
@@ -311,4 +324,62 @@ public class PanelMedicoController {
 			e.printStackTrace();
 		}
 	}
+
+	@FXML
+	public void imprimirListaCitas(ActionEvent actionEvent) {
+		generarPdfConTablas();
+	}
+
+	public void generarPdfConTablas() {
+		String destino = "citas_pacientes.pdf";
+		try {
+			PdfWriter writer = new PdfWriter(destino);
+			PdfDocument pdfDoc = new PdfDocument(writer);
+			Document document = new Document(pdfDoc); // Crear instancia de Document
+
+			Table tablaCitasPdf = new Table(new float[]{1, 3, 3, 2});
+			tablaCitasPdf.addCell(new Cell().add(new Paragraph("ID")));
+			tablaCitasPdf.addCell(new Cell().add(new Paragraph("Paciente")));
+			tablaCitasPdf.addCell(new Cell().add(new Paragraph("Medico")));
+			tablaCitasPdf.addCell(new Cell().add(new Paragraph("Fecha")));
+
+			for (Visita visita : tablaCitas.getItems()) {
+				tablaCitasPdf.addCell(new Cell().add(new Paragraph(String.valueOf(visita.getId()))));
+				tablaCitasPdf.addCell(new Cell().add(new Paragraph(visita.getPaciente().getNombre())));
+				tablaCitasPdf.addCell(new Cell().add(new Paragraph(visita.getMedico().getNombre())));
+				tablaCitasPdf.addCell(new Cell().add(new Paragraph(visita.getFecha().toString())));
+			}
+
+			// Crear tabla para pacientes
+			Table tablaPacientesPdf = new Table(new float[]{1, 3, 3, 3});
+			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("ID")));
+			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("Nombre")));
+			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("Apellidos")));
+			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("Pueblo Residencia")));
+
+			for (Paciente paciente : tablaPacientes.getItems()) {
+				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(String.valueOf(paciente.getId()))));
+				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(paciente.getNombre())));
+				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(paciente.getApellidos())));
+				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(paciente.getPueblo_residencia())));
+			}
+
+			document.add(new Paragraph("Citas:"));
+			document.add(tablaCitasPdf);
+			document.add(new Paragraph("\nPacientes:"));
+			document.add(tablaPacientesPdf);
+
+			document.close();
+			System.out.println("PDF creado en: " + destino);
+			File archivoPdf = new File(destino);
+			if (archivoPdf.exists()) {
+				Desktop.getDesktop().open(archivoPdf);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
 }

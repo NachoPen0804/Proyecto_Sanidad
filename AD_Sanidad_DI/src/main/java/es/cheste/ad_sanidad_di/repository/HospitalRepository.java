@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HospitalRepository extends JpaRepository<Hospital, Long> {
+	boolean existsByNombre(String nombre);
 	/*
 	save(S entity): Guarda una entidad.
 	

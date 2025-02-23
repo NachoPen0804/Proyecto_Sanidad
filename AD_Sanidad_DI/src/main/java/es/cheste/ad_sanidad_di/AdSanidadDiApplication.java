@@ -1,13 +1,15 @@
 package es.cheste.ad_sanidad_di;
 
 import es.cheste.ad_sanidad_di.javaFX.JavaFxApp;
-import es.cheste.ad_sanidad_di.model.Usuario;
-import es.cheste.ad_sanidad_di.repository.UsuarioRepository;
+import es.cheste.ad_sanidad_di.model.*;
+import es.cheste.ad_sanidad_di.repository.*;
 import javafx.application.Application;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class AdSanidadDiApplication {
@@ -19,10 +21,22 @@ public class AdSanidadDiApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner CargarUsuarios(UsuarioRepository repository) {
+	public CommandLineRunner CargarUsuariosMedicosHospitales(UsuarioRepository repositoryUsers, MedicoRepository repositoryMedic, HospitalRepository repositoryHospitals, PacienteRepository repositoryPacients, VisitaRepository repositoryVisitas) {
 		return (args) -> {
-			repository.save(new Usuario("admin", "1234"));
-			repository.save(new Usuario("user", "user123"));
+			repositoryUsers.save(new Usuario("admin", "1234"));
+			repositoryUsers.save(new Usuario("user", "user123"));
+
+			Hospital hospital = new Hospital("La Prueba", "Cheste");
+			repositoryHospitals.save(hospital);
+
+			Medico medico = new Medico("Pablo", "Prueba Prueba", hospital, "prueba");
+			repositoryMedic.save(medico);
+
+			Paciente paciente = new Paciente("Pedro", "Prueba Prueba", "Cheste", "prueba");
+			repositoryPacients.save(paciente);
+
+			repositoryVisitas.save(new Visita(paciente, medico, LocalDate.of(2025,2,22)));
+
 		};
 	}
 }
