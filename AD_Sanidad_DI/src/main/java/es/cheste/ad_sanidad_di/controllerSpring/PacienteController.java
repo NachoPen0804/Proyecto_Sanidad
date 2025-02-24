@@ -11,21 +11,22 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/pacientes")
 public class PacienteController {
-    private final PacienteRepository pacienteRepository;
+	private final PacienteRepository pacienteRepository;
 
-    public PacienteController(PacienteRepository pacienteRepository) {
-        this.pacienteRepository = pacienteRepository;
-    }
+	public PacienteController(PacienteRepository pacienteRepository) {
+		this.pacienteRepository = pacienteRepository;
+	}
 
-    @GetMapping
-    public List<Paciente> getAllPacientes() {
-        return pacienteRepository.findAll();
-    }
+	@GetMapping
+	public List<Paciente> getAllPacientes() {
+		return pacienteRepository.findAll();
+	}
 
-    @PostMapping
-    public Paciente createPaciente(@RequestBody Paciente nuevo) {
-        return pacienteRepository.save(nuevo);
-    }
+	@PostMapping
+	public Paciente createPaciente(@RequestBody Paciente nuevo) {
+		return pacienteRepository.save(nuevo);
+	}
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Paciente> getPaciente(@PathVariable Long id) {
 		return pacienteRepository.findById(id)
@@ -40,11 +41,14 @@ public class PacienteController {
 					pacienteExistente.setNombre(paciente.getNombre());
 					pacienteExistente.setApellidos(paciente.getApellidos());
 					pacienteExistente.setPueblo_residencia(paciente.getPueblo_residencia());
+					pacienteExistente.setTelefono(paciente.getTelefono()); // Nuevo campo
+					pacienteExistente.setPassword(paciente.getPassword());
 					Paciente pacienteActualizado = pacienteRepository.save(pacienteExistente);
 					return ResponseEntity.ok(pacienteActualizado);
 				})
 				.orElse(ResponseEntity.notFound().build());
 	}
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePaciente(@PathVariable Long id) {
 		return pacienteRepository.findById(id)

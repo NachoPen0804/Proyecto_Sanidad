@@ -44,7 +44,7 @@ public class EliminarPacienteController {
 				return;
 			}
 
-			pacienteApiClient.eliminarPaciente(id);
+			pacienteApiClient.delete(id);
 			mostrarInformacion("Paciente eliminado", "El paciente ha sido eliminado exitosamente");
 
 			Stage stage = (Stage) acept_delete_paciente_btn.getScene().getWindow();

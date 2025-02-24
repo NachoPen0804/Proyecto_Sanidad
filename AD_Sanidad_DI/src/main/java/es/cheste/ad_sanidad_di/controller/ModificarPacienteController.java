@@ -67,7 +67,7 @@ public class ModificarPacienteController {
 			paciente.setApellidos(apellidos);
 			paciente.setPueblo_residencia(pueblo);
 
-			pacienteApiClient.actualizarPaciente(paciente);
+			pacienteApiClient.update(paciente);
 			mostrarInformacion("Paciente modificado", "El paciente ha sido modificado exitosamente");
 			
 			Stage stage = (Stage) acept_edit_paciente_btn.getScene().getWindow();

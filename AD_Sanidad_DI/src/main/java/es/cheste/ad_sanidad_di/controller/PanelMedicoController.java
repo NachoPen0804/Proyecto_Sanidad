@@ -121,10 +121,16 @@ public class PanelMedicoController {
 	private Button imprimir_btn;
     @FXML
     private Button imprimir_btn1;
-    @FXML
-    private TableColumn hora_tabla;
+    
+	@FXML
+	private TableColumn<Paciente, String> telefono_tabla;
 
-    @Deprecated
+	@FXML
+	private TableColumn<Visita, String> hora_tabla;
+	@FXML
+	private TableColumn<Visita, String> minutos_tabla;
+	
+	@Deprecated
 	public void pacientes_lista(ActionEvent actionEvent) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/prueba.fxml"));
@@ -153,6 +159,13 @@ public class PanelMedicoController {
 		nombre_paciente_tabla_panel_paciente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		apellidos_paciente_tabla_panel_paciente.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
 		pueblo_tabla.setCellValueFactory(new PropertyValueFactory<>("pueblo_residencia"));
+		telefono_tabla.setCellValueFactory(new PropertyValueFactory<>("telefono")); // Nueva columna
+
+		hora_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getHora()))); // Cambiado a "hora_tabla"
+		minutos_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getMinuto())));
+		
+		// Carga los datos
+
 
 
 		cargarDatosCitas();
@@ -349,7 +362,7 @@ public class PanelMedicoController {
 		try {
 			PdfWriter writer = new PdfWriter(destino);
 			PdfDocument pdfDoc = new PdfDocument(writer);
-			Document document = new Document(pdfDoc); // Crear instancia de Document
+			Document document = new Document(pdfDoc);
 
 			Table tablaCitasPdf = new Table(new float[]{1, 3, 3, 2});
 			tablaCitasPdf.addCell(new Cell().add(new Paragraph("ID")));
@@ -364,18 +377,19 @@ public class PanelMedicoController {
 				tablaCitasPdf.addCell(new Cell().add(new Paragraph(visita.getFecha().toString())));
 			}
 
-			// Crear tabla para pacientes
-			Table tablaPacientesPdf = new Table(new float[]{1, 3, 3, 3});
+			Table tablaPacientesPdf = new Table(new float[]{1, 3, 3, 3, 3}); // Añadimos una columna para teléfono
 			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("ID")));
 			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("Nombre")));
 			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("Apellidos")));
 			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("Pueblo Residencia")));
+			tablaPacientesPdf.addCell(new Cell().add(new Paragraph("Teléfono"))); // Nueva columna
 
 			for (Paciente paciente : tablaPacientes.getItems()) {
 				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(String.valueOf(paciente.getId()))));
 				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(paciente.getNombre())));
 				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(paciente.getApellidos())));
 				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(paciente.getPueblo_residencia())));
+				tablaPacientesPdf.addCell(new Cell().add(new Paragraph(paciente.getTelefono() != null ? paciente.getTelefono() : ""))); // Nueva columna
 			}
 
 			document.add(new Paragraph("Citas:"));
@@ -386,14 +400,14 @@ public class PanelMedicoController {
 			document.close();
 			System.out.println("PDF creado en: " + destino);
 			File archivoPdf = new File(destino);
-			if (archivoPdf.exists()) {
+			if (archivoPdf.exists() && Desktop.isDesktopSupported()) {
 				Desktop.getDesktop().open(archivoPdf);
+			} else {
+				System.out.println("No se puede abrir el PDF automáticamente. Abre manualmente en: " + destino);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 	}
 
 }

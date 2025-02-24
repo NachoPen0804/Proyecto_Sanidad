@@ -31,6 +31,25 @@ public class HospitalApiClient{
 			return Collections.emptyList();
 		}
 	}
+	public Hospital obtenerHospitalPorNombre(String nombre) {
+		try {
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create(baseUrl + "/nombre/" + nombre))
+					.GET()
+					.build();
+
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			if (response.statusCode() == 200) {
+				return mapper.readValue(response.body(), Hospital.class);
+			} else if (response.statusCode() == 404) {
+				return null; // No encontrado
+			} else {
+				throw new RuntimeException("Error al buscar hospital: " + response.body());
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Error al buscar hospital por nombre", e);
+		}
+	}
 	public void create(Hospital hospital) {
 		try {
 			String json = mapper.writeValueAsString(hospital);
@@ -61,6 +80,23 @@ public class HospitalApiClient{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	public List<Hospital> obtenerHospitales() {
+		try {
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create(baseUrl))
+					.GET()
+					.build();
+
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			if (response.statusCode() == 200) {
+				return mapper.readValue(response.body(), new TypeReference<List<Hospital>>() {});
+			} else {
+				throw new RuntimeException("Error al obtener hospitales: " + response.body());
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Error al obtener hospitales", e);
 		}
 	}
 }

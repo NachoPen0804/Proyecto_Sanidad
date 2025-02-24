@@ -89,6 +89,7 @@ public class LoginController {
 			stage.setTitle("Sistema Hospitalario");
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana principal");
+			e.printStackTrace();
 		}
 	}
 
@@ -113,11 +114,21 @@ public class LoginController {
 		}
 	}
 
-	@javafx.fxml.FXML
-	public void registerAccount(ActionEvent actionEvent) {
-	}
-
+	
     @javafx.fxml.FXML
     public void salirVentana(Event event) {
     }
+
+	@javafx.fxml.FXML
+	public void addMedico(ActionEvent actionEvent) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/MedicoAdd.fxml"));
+			Parent root = loader.load();
+			Stage stage = (Stage) register_boton.getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Registro de Médico");
+		} catch (Exception e) {
+			mostrarError("Error", "No se pudo cargar la ventana de registro de médico");
+		}
+	}
 }

@@ -4,8 +4,13 @@ import es.cheste.ad_sanidad_di.model.Visita;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Repository
 public interface VisitaRepository extends JpaRepository<Visita, Long> {
+	List<Visita> findByMedicoIdAndFechaAndHoraAndMinuto(Long medicoId, LocalDate fecha, int hora, int minuto);
+
 	/*
 	save(S entity): Guarda una entidad.
 	

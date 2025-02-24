@@ -54,14 +54,16 @@ public class AñadirPacienteController {
 			return;
 		}
 
-		Paciente paciente = new Paciente();
-		paciente.setNombre(nombre);
-		paciente.setApellidos(apellidos);
-		paciente.setPueblo_residencia(pueblo);
-		paciente.setPassword(password); 
+		Paciente paciente = new Paciente(
+				paciente_nombre_text.getText(),
+				paciente_apellidos_text.getText(),
+				paciente_pueblo_text.getText(),
+				paciente_telefono_text.getText(),
+				paciente_password.getText()
+		); 
 
 		try {
-			pacienteApiClient.crearPaciente(paciente);
+			pacienteApiClient.create(paciente);
 			mostrarInformacion("Paciente añadido", "El paciente ha sido añadido exitosamente");
 			panelMedicoController.actualizarTablaPacientes();
 			Stage stage = (Stage) acept_add_paciente_btn.getScene().getWindow();
