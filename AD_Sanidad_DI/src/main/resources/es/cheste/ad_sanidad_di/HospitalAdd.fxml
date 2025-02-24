@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="279.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.cheste.ad_sanidad_di.controller.AñadirHospitalController">
+   <children>
+      <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="281.0" prefWidth="560.0" styleClass="bg-color" stylesheets="@../ad_sanidad_di/styles/LoginDesign.css">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="175.0" layoutY="65.0" selectionFill="RED" size="60" text="" wrappingWidth="52.79998779296875" />
+            <Label layoutX="228.0" layoutY="32.0" text="CREAR HOSPITAL" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="hospital_nombre_text" layoutX="37.0" layoutY="126.0" prefHeight="30.0" prefWidth="206.0" promptText="NOMBRE" />
+            <TextField fx:id="login_showPassword" layoutX="39.0" layoutY="213.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" visible="false">
+               <styleClass>
+                  <String fx:value="textfield-1" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+            </TextField>
+            <Button fx:id="acept_add_medico_btn" layoutX="306.0" layoutY="208.0" mnemonicParsing="false" onAction="#addHospital" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
+            <Button fx:id="cancel_add_hospital_btn" layoutX="95.0" layoutY="208.0" mnemonicParsing="false" onAction="#cancelAddHospital" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
+            <Label layoutX="50.0" layoutY="97.0" text="NOMBRE DEL CENTRO" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="hospital_localidad_text" layoutX="317.0" layoutY="126.0" prefHeight="30.0" prefWidth="206.0" promptText="LOCALIDAD" />
+            <Label layoutX="318.0" layoutY="97.0" text="LOCALIDAD DEL CENTRO" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

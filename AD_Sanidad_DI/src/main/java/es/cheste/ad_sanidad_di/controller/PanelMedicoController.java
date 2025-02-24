@@ -119,9 +119,10 @@ public class PanelMedicoController {
 	private Medico medicoiniciado;
 	@FXML
 	private Button imprimir_btn;
+    @FXML
+    private Button imprimir_btn1;
 
-
-	@Deprecated
+    @Deprecated
 	public void pacientes_lista(ActionEvent actionEvent) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/es/cheste/ad_sanidad_di/prueba.fxml"));

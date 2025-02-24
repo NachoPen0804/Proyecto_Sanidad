@@ -26,8 +26,8 @@
                   <String fx:value="white-bg" />
                </styleClass>
             </TextField>
-            <Button fx:id="acept_add_cita_btn" layoutX="329.0" layoutY="299.0" mnemonicParsing="false" onAction="#addCita" prefHeight="40.0" prefWidth="161.0" text="ACEPTAR" />
-            <Button fx:id="cancel_add_cita_btn" layoutX="86.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddCita" prefHeight="40.0" prefWidth="161.0" text="CANCELAR" />
+            <Button fx:id="acept_add_cita_btn" layoutX="329.0" layoutY="299.0" mnemonicParsing="false" onAction="#addCita" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
+            <Button fx:id="cancel_add_cita_btn" layoutX="86.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddCita" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
             <Label layoutX="67.0" layoutY="155.0" text="ID DEL PACIENTE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />

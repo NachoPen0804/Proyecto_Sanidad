@@ -18,8 +18,8 @@
                </font>
             </Label>
             <TextField fx:id="id_paciente" layoutX="130.0" layoutY="107.0" prefHeight="30.0" prefWidth="209.0" promptText="ID PACIENTE" />
-            <Button fx:id="acept_delete_paciente_btn" layoutX="280.0" layoutY="160.0" mnemonicParsing="false" onAction="#deletePaciente" prefHeight="40.0" prefWidth="161.0" text="ACEPTAR" />
-            <Button fx:id="cancel_delete_paciente_btn" layoutX="30.0" layoutY="160.0" mnemonicParsing="false" onAction="#cancelDeletePaciente" prefHeight="40.0" prefWidth="161.0" text="CANCELAR" />
+            <Button fx:id="acept_delete_paciente_btn" layoutX="280.0" layoutY="160.0" mnemonicParsing="false" onAction="#deletePaciente" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
+            <Button fx:id="cancel_delete_paciente_btn" layoutX="30.0" layoutY="160.0" mnemonicParsing="false" onAction="#cancelDeletePaciente" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
             <Label layoutX="163.0" layoutY="84.0" text="ID DEL PACIENTE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
