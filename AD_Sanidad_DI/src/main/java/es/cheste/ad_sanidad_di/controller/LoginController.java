@@ -115,4 +115,8 @@ public class LoginController {
 	@javafx.fxml.FXML
 	public void registerAccount(ActionEvent actionEvent) {
 	}
+
+    @javafx.fxml.FXML
+    public void salirVentana(Event event) {
+    }
 }

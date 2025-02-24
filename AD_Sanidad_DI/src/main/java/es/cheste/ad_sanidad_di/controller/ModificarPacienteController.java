@@ -29,8 +29,14 @@ public class ModificarPacienteController {
 
 	private final PacienteApiClient pacienteApiClient = new PacienteApiClient();
 	private PanelMedicoController panelMedicoController;
+    @javafx.fxml.FXML
+    private TextField paciente_telefono_text;
+    @javafx.fxml.FXML
+    private PasswordField paciente_passw_text;
+    @javafx.fxml.FXML
+    private PasswordField paciente_confirm_passw_text;
 
-	public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
+    public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
 		this.panelMedicoController = panelMedicoController;
 	}
 

@@ -121,6 +121,8 @@ public class PanelMedicoController {
 	private Button imprimir_btn;
     @FXML
     private Button imprimir_btn1;
+    @FXML
+    private TableColumn hora_tabla;
 
     @Deprecated
 	public void pacientes_lista(ActionEvent actionEvent) {

@@ -27,8 +27,8 @@ Este es un sistema hospitalario desarrollado con **JavaFX** y **Spring Boot**, c
 📌 **Entidades principales**:
 1. **Hospital** (id, nombre, localidad) 🏥  
 2. **Médico** (id, nombre, apellidos, id_hospital, contrasenya) 👨‍⚕️  
-3. **Paciente** (id, nombre, apellidos, pueblo_residencia, contrasenya) 🧑‍⚕️  
-4. **Visita** (id, id_paciente, id_medico, fecha) 📅  
+3. **Paciente** (id, nombre, apellidos, pueblo_residencia, telefono, contrasenya) 🧑‍⚕️  
+4. **Visita** (id, id_paciente, id_medico, fecha, hora) 📅  
 
 ---
 

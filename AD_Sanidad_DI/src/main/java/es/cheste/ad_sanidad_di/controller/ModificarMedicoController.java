@@ -14,7 +14,9 @@ public class ModificarMedicoController {
     @javafx.fxml.FXML
     private TextField medico_id_hospital_text;
     @javafx.fxml.FXML
-    private TextField medico_contrasenya_text;
+    private PasswordField medico_password;
+    @javafx.fxml.FXML
+    private PasswordField medico_confirm_password;
 
     @javafx.fxml.FXML
     public void modificarMedico(ActionEvent actionEvent) {

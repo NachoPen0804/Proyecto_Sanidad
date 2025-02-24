@@ -27,8 +27,6 @@ import java.util.stream.Collectors;
 
 public class PanelPacienteController {
 	@javafx.fxml.FXML
-	private Label nombre_medico_superior;
-	@javafx.fxml.FXML
 	private Label citas_pend_paciente;
 	@javafx.fxml.FXML
 	private TableView<Visita> tablaCitas;
@@ -58,8 +56,12 @@ public class PanelPacienteController {
 	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
     @FXML
     private Circle top_profile;
+	@FXML
+	private Label nombre_paciente_superior;
+	@FXML
+	private TableColumn hora_tabla;
 
-    public void cargarPaciente(Paciente pacienteLogin) {
+	public void cargarPaciente(Paciente pacienteLogin) {
 		this.paciente = pacienteLogin;
 		setNombrePaciente(pacienteLogin.getNombre());
 		setIdPaciente(pacienteLogin.getId());

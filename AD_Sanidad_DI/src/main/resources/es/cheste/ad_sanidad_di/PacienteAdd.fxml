@@ -4,52 +4,65 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.cheste.ad_sanidad_di.controller.AñadirPacienteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.cheste.ad_sanidad_di.controller.AñadirPacienteController">
    <children>
-      <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="365.0" prefWidth="560.0" styleClass="bg-color" stylesheets="@../ad_sanidad_di/styles/LoginDesign.css">
+      <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="438.0" prefWidth="669.0" styleClass="bg-color" stylesheets="@../ad_sanidad_di/styles/LoginDesign.css">
          <children>
-            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="169.0" layoutY="84.0" selectionFill="RED" size="60" text="" wrappingWidth="52.79998779296875" />
-            <Label layoutX="222.0" layoutY="51.0" text="CREAR PACIENTE" textFill="WHITE">
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="230.0" layoutY="65.0" selectionFill="RED" size="60" text="" wrappingWidth="52.79998779296875" />
+            <Label layoutX="283.0" layoutY="32.0" text="CREAR PACIENTE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_nombre_text" layoutX="28.0" layoutY="134.0" prefHeight="30.0" prefWidth="206.0" promptText="NOMBRE" />
+            <TextField fx:id="paciente_nombre_text" layoutX="61.0" layoutY="116.0" prefHeight="30.0" prefWidth="206.0" promptText="NOMBRE" />
             <TextField fx:id="login_showPassword" layoutX="39.0" layoutY="213.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" visible="false">
                <styleClass>
                   <String fx:value="textfield-1" />
                   <String fx:value="white-bg" />
                </styleClass>
             </TextField>
-            <Button fx:id="acept_add_paciente_btn" layoutX="307.0" layoutY="299.0" mnemonicParsing="false" onAction="#addPaciente" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
-            <Button fx:id="cancel_add_paciente_btn" layoutX="73.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddPaciente" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
-            <Label layoutX="95.0" layoutY="105.0" text="NOMBRE" textFill="WHITE">
+            <Button fx:id="acept_add_paciente_btn" layoutX="383.0" layoutY="368.0" mnemonicParsing="false" onAction="#addPaciente" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
+            <Button fx:id="cancel_add_paciente_btn" layoutX="115.0" layoutY="368.0" mnemonicParsing="false" onAction="#cancelAddPaciente" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
+            <Label layoutX="128.0" layoutY="87.0" text="NOMBRE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_apellidos_text" layoutX="308.0" layoutY="134.0" prefHeight="30.0" prefWidth="206.0" promptText="APELLIDOS" />
-            <Label layoutX="364.0" layoutY="105.0" text="APELLIDOS" textFill="WHITE">
+            <TextField fx:id="paciente_apellidos_text" layoutX="379.0" layoutY="116.0" prefHeight="30.0" prefWidth="206.0" promptText="APELLIDOS" />
+            <Label layoutX="435.0" layoutY="87.0" text="APELLIDOS" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_pueblo_text" layoutX="28.0" layoutY="213.0" prefHeight="30.0" prefWidth="206.0" promptText="PUEBLO RESIDENCIA" />
-            <Label layoutX="45.0" layoutY="183.0" text="PUEBLO RESIDENCIA" textFill="WHITE">
+            <TextField fx:id="paciente_pueblo_text" layoutX="56.0" layoutY="206.0" prefHeight="30.0" prefWidth="206.0" promptText="PUEBLO RESIDENCIA" />
+            <Label layoutX="73.0" layoutY="176.0" text="PUEBLO RESIDENCIA" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_password" layoutX="307.0" layoutY="213.0" prefHeight="30.0" prefWidth="206.0" promptText="CONTRASEÑA" />
-            <Label layoutX="355.0" layoutY="183.0" text="CONTRASEÑA" textFill="WHITE">
+            <TextField fx:id="paciente_telefono_text" layoutX="381.0" layoutY="206.0" prefHeight="30.0" prefWidth="206.0" promptText="TELÉFONO" />
+            <Label layoutX="427.0" layoutY="177.0" text="TELÉFONO" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
+            <Label layoutX="98.0" layoutY="263.0" text="CONTRASEÑA" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="paciente_password" layoutX="50.0" layoutY="289.0" prefHeight="30.0" prefWidth="206.0" promptText="CONTRASEÑA" />
+            <Label layoutX="378.0" layoutY="264.0" text="CONFIRMAR CONTRASEÑA" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="paciente_confirm_password" layoutX="383.0" layoutY="290.0" prefHeight="30.0" prefWidth="206.0" promptText="CONFIRMAR CONTRASEÑA" />
          </children>
       </AnchorPane>
    </children>

@@ -34,6 +34,7 @@
                         <CheckBox fx:id="login_checkBox" layoutX="39.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginShowPassword" text="Mostrar Contraseña" textFill="WHITE" />
                         <Button fx:id="login_boton" layoutX="40.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginAccountPaciente" prefHeight="40.0" prefWidth="250.0" styleClass="btn-pacient" stylesheets="@styles/LoginDesign.css" text="Entrar" />
                   <Button fx:id="login_medico_boton" layoutX="40.0" layoutY="475.0" mnemonicParsing="false" onAction="#ventanaLoginMedico" prefHeight="40.0" prefWidth="250.0" styleClass="btn-pacient" stylesheets="@styles/LoginDesign.css" text="ENTRAR COMO MEDICO" />
+                  <FontAwesomeIconView fill="RED" glyphName="" layoutX="286.0" layoutY="39.0" onMouseClicked="#salirVentana" selectionEnd="0" selectionFill="RED" size="30" text="" wrappingWidth="28.758358001708984" />
                     </children>
                 </AnchorPane>
             </children>

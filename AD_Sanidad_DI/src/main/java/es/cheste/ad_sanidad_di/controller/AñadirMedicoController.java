@@ -11,8 +11,6 @@ public class AñadirMedicoController {
     @javafx.fxml.FXML
     private TextField login_showPassword;
     @javafx.fxml.FXML
-    private TextField medico_password;
-    @javafx.fxml.FXML
     private AnchorPane login_form;
     @javafx.fxml.FXML
     private TextField medico_hospital_text;
@@ -24,6 +22,10 @@ public class AñadirMedicoController {
     private Button acept_add_medico_btn;
     @javafx.fxml.FXML
     private TextField medico_nombre_text;
+    @javafx.fxml.FXML
+    private PasswordField medico_password;
+    @javafx.fxml.FXML
+    private PasswordField medico_confirm_password;
 
     @javafx.fxml.FXML
     public void cancelAddMedico(ActionEvent actionEvent) {

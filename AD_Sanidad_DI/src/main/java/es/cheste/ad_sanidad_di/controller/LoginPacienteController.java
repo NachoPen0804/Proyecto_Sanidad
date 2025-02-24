@@ -115,4 +115,8 @@ public class LoginPacienteController {
 		alert.setContentText(mensaje);
 		alert.showAndWait();
 	}
+
+    @javafx.fxml.FXML
+    public void salirVentana(Event event) {
+    }
 }

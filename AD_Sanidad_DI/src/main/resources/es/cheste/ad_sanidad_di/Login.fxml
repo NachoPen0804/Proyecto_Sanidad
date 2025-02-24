@@ -35,6 +35,7 @@
                         <Button fx:id="login_boton" layoutX="40.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginAccount" prefHeight="40.0" prefWidth="250.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ENTRAR" />
                   <Button fx:id="login_paciente_view_boton" layoutX="40.0" layoutY="475.0" mnemonicParsing="false" onAction="#ventanaLoginPaciente" prefHeight="40.0" prefWidth="250.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ENTRAR COMO PACIENTE" />
                   <Button fx:id="register_boton" layoutX="77.0" layoutY="335.0" mnemonicParsing="false" onAction="#registerAccount" prefHeight="30.0" prefWidth="177.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="REGISTRAR MÉDICO" />
+                  <FontAwesomeIconView fill="RED" glyphName="" layoutX="287.0" layoutY="40.0" onMouseClicked="#salirVentana" selectionEnd="0" selectionFill="RED" size="30" text="" wrappingWidth="28.758358001708984" />
                     </children>
                 </AnchorPane>
             </children>

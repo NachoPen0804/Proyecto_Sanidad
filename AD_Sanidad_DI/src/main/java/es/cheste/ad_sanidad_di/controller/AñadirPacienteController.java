@@ -28,7 +28,11 @@ public class AñadirPacienteController {
 	
 	private PanelMedicoController panelMedicoController;
 	@javafx.fxml.FXML
-	private TextField paciente_password;
+	private TextField paciente_telefono_text;
+	@javafx.fxml.FXML
+	private PasswordField paciente_password;
+	@javafx.fxml.FXML
+	private PasswordField paciente_confirm_password;
 
 	public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
 		this.panelMedicoController = panelMedicoController;

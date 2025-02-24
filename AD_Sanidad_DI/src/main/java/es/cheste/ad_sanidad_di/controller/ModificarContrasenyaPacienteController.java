@@ -6,9 +6,9 @@ public class ModificarContrasenyaPacienteController {
     @javafx.fxml.FXML
     private Button cancel_edit_passw_paciente_btn;
     @javafx.fxml.FXML
-    private TextField new_passw_paciente_text;
+    private PasswordField new_passw_paciente_text;
     @javafx.fxml.FXML
-    private TextField confirm_passw_paciente_text;
+    private PasswordField confirm_passw_paciente_text;
 
     @javafx.fxml.FXML
     public void modificarContrasenyaPaciente(ActionEvent actionEvent) {

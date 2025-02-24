@@ -36,8 +36,12 @@ public class CrearCitaController {
 	private Button cancel_add_cita_btn;
 	@javafx.fxml.FXML
 	private DatePicker fecha_cita_add;
+    @javafx.fxml.FXML
+    private ChoiceBox opcion_hora_cita;
+    @javafx.fxml.FXML
+    private ChoiceBox opcion_minuto_cita;
 
-	public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
+    public void setPanelMedicoController(PanelMedicoController panelMedicoController) {
 		this.panelMedicoController = panelMedicoController;
 	}
 

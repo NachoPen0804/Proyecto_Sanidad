@@ -4,13 +4,14 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.cheste.ad_sanidad_di.controller.AñadirMedicoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.cheste.ad_sanidad_di.controller.AñadirMedicoController">
    <children>
-      <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="365.0" prefWidth="560.0" styleClass="bg-color" stylesheets="@../ad_sanidad_di/styles/LoginDesign.css">
+      <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="420.0" prefWidth="560.0" styleClass="bg-color" stylesheets="@../ad_sanidad_di/styles/LoginDesign.css">
          <children>
             <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="183.0" layoutY="79.0" selectionFill="RED" size="60" text="" wrappingWidth="52.79998779296875" />
             <Label layoutX="236.0" layoutY="46.0" text="CREAR MÉDICO" textFill="WHITE">
@@ -25,8 +26,8 @@
                   <String fx:value="white-bg" />
                </styleClass>
             </TextField>
-            <Button fx:id="acept_add_medico_btn" layoutX="307.0" layoutY="300.0" mnemonicParsing="false" onAction="#addMedico" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
-            <Button fx:id="cancel_add_medico_btn" layoutX="84.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddMedico" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
+            <Button fx:id="acept_add_medico_btn" layoutX="307.0" layoutY="356.0" mnemonicParsing="false" onAction="#addMedico" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
+            <Button fx:id="cancel_add_medico_btn" layoutX="84.0" layoutY="356.0" mnemonicParsing="false" onAction="#cancelAddMedico" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
             <Label layoutX="104.0" layoutY="97.0" text="NOMBRE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
@@ -44,13 +45,19 @@
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="medico_password" layoutX="316.0" layoutY="205.0" prefHeight="30.0" prefWidth="206.0" promptText="CONTRASEÑA" />
             <Label layoutX="364.0" layoutY="175.0" text="CONTRASEÑA" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="view_add_hospital_btn" layoutX="38.0" layoutY="240.0" mnemonicParsing="false" onAction="#abrirVentanaAddHospital" prefHeight="28.0" prefWidth="206.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="REGISTRAR HOSPITAL" />
+            <Button fx:id="view_add_hospital_btn" layoutX="37.0" layoutY="261.0" mnemonicParsing="false" onAction="#abrirVentanaAddHospital" prefHeight="28.0" prefWidth="206.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="REGISTRAR HOSPITAL" />
+            <PasswordField fx:id="medico_password" layoutX="317.0" layoutY="205.0" prefHeight="30.0" prefWidth="206.0" promptText="CONTRASEÑA" />
+            <Label layoutX="312.0" layoutY="252.0" text="CONFIRMAR CONTRASEÑA" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="medico_confirm_password" layoutX="317.0" layoutY="284.0" prefHeight="30.0" prefWidth="206.0" promptText="CONFIRMAR CONTRASEÑA" />
          </children>
       </AnchorPane>
    </children>

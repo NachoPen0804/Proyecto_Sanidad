@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -19,7 +20,7 @@
                   <Font name="Tahoma" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="paciente_cita_text" layoutX="47.0" layoutY="190.0" prefHeight="30.0" prefWidth="183.0" promptText="ID_PACIENTE" />
+            <TextField fx:id="paciente_cita_text" layoutX="25.0" layoutY="185.0" prefHeight="30.0" prefWidth="183.0" promptText="ID_PACIENTE" />
             <TextField fx:id="login_showPassword" layoutX="39.0" layoutY="213.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" visible="false">
                <styleClass>
                   <String fx:value="textfield-1" />
@@ -28,13 +29,25 @@
             </TextField>
             <Button fx:id="acept_add_cita_btn" layoutX="329.0" layoutY="299.0" mnemonicParsing="false" onAction="#addCita" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
             <Button fx:id="cancel_add_cita_btn" layoutX="86.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelAddCita" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
-            <Label layoutX="67.0" layoutY="155.0" text="ID DEL PACIENTE" textFill="WHITE">
+            <Label layoutX="45.0" layoutY="150.0" text="ID DEL PACIENTE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
-            <DatePicker fx:id="fecha_cita_add" layoutX="343.0" layoutY="190.0" prefHeight="30.0" prefWidth="183.0" />
-            <Label layoutX="359.0" layoutY="155.0" text="FECHA DE LA CITA" textFill="WHITE">
+            <DatePicker fx:id="fecha_cita_add" layoutX="230.0" layoutY="186.0" prefHeight="30.0" prefWidth="183.0" />
+            <Label layoutX="246.0" layoutY="151.0" text="FECHA DE LA CITA" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="opcion_hora_cita" layoutX="437.0" layoutY="185.0" prefHeight="30.0" prefWidth="53.0" />
+            <Label alignment="CENTER" layoutX="425.0" layoutY="151.0" prefHeight="23.0" prefWidth="77.0" text="HORA" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="opcion_minuto_cita" layoutX="514.0" layoutY="185.0" prefHeight="30.0" prefWidth="53.0" />
+            <Label alignment="CENTER" layoutX="502.0" layoutY="151.0" prefHeight="23.0" prefWidth="77.0" text="MINUTO" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
