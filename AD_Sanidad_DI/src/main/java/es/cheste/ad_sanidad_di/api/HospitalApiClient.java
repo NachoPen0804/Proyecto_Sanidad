@@ -15,7 +15,7 @@ import java.util.List;
 public class HospitalApiClient{
 	private final HttpClient client = HttpClient.newHttpClient();
 	private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
-	private final String baseUrl = "http://localhost:8080/api/visitas";
+	private final String baseUrl = "http://localhost:8080/api/hospitales";
 	
 	public List<Hospital> obtenerPacientes(){
 		HttpRequest request = HttpRequest.newBuilder()
@@ -43,6 +43,24 @@ public class HospitalApiClient{
 			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	public Hospital obtenerHospitalPorId(long id) {
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(baseUrl + "/" + id))
+				.GET()
+				.build();
+
+		try {
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			if (response.statusCode() == 200) {
+				return mapper.readValue(response.body(), Hospital.class);
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

@@ -20,23 +20,5 @@ public class AdSanidadDiApplication {
 		
 	}
 	
-	@Bean
-	public CommandLineRunner CargarUsuariosMedicosHospitales(UsuarioRepository repositoryUsers, MedicoRepository repositoryMedic, HospitalRepository repositoryHospitals, PacienteRepository repositoryPacients, VisitaRepository repositoryVisitas) {
-		return (args) -> {
-			repositoryUsers.save(new Usuario("admin", "1234"));
-			repositoryUsers.save(new Usuario("user", "user123"));
-
-			Hospital hospital = new Hospital("La Prueba", "Cheste");
-			repositoryHospitals.save(hospital);
-
-			Medico medico = new Medico("Pablo", "Prueba Prueba", hospital, "prueba");
-			repositoryMedic.save(medico);
-
-			Paciente paciente = new Paciente("Pedro", "Prueba Prueba", "Cheste", "prueba");
-			repositoryPacients.save(paciente);
-
-			repositoryVisitas.save(new Visita(paciente, medico, LocalDate.of(2025,2,22)));
-
-		};
-	}
+	
 }

@@ -1,5 +1,10 @@
 package es.cheste.ad_sanidad_di.controller;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
 public class ModificarContrasenyaPacienteController {
     @javafx.fxml.FXML
     private Button acept_edit_passw_paciente_btn;

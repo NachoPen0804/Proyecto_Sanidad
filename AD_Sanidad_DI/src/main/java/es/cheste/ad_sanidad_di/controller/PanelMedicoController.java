@@ -234,8 +234,19 @@ public class PanelMedicoController {
 
 
 	@FXML
-	public void editarDatosPerfil() {
-
+	public void editarDatosPerfil() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/MedicoEdit.fxml"));
+		Parent root = loader.load();
+		
+		ModificarMedicoController controller = loader.getController();
+		controller.setMedicoSeleccionado(medicoiniciado); // El médico actualmente logueado
+		controller.setPanelMedicoController(this);
+		Stage stage = new Stage();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Editar paciente");
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
+		
 	}
 
 	@FXML

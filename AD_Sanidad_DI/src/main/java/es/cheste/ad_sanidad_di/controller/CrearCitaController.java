@@ -7,10 +7,7 @@ import es.cheste.ad_sanidad_di.model.Medico;
 import es.cheste.ad_sanidad_di.model.Paciente;
 import es.cheste.ad_sanidad_di.model.Visita;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 

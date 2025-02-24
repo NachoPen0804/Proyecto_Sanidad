@@ -19,6 +19,7 @@ public class HospitalController {
     public List<Hospital> obtenerHospitales() {
         return hospitalRepository.findAll();
     }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<Hospital> obtenerHospitalPorId(@PathVariable Long id) {

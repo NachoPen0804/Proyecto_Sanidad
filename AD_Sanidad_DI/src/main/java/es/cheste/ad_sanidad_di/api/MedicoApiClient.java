@@ -3,6 +3,7 @@ package es.cheste.ad_sanidad_di.api;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import es.cheste.ad_sanidad_di.DTO.MedicoUpdateDTO;
 import es.cheste.ad_sanidad_di.model.Medico;
 
 import java.net.URI;
@@ -78,6 +79,21 @@ public class MedicoApiClient {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	public void update(Medico medico) {
+		try {
+			MedicoUpdateDTO dto = new MedicoUpdateDTO(medico); // Convertir a DTO
+			String json = mapper.writeValueAsString(dto);
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create(baseUrl + "/" + medico.getId()))
+					.header("Content-Type", "application/json")
+					.PUT(HttpRequest.BodyPublishers.ofString(json))
+					.build();
+
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

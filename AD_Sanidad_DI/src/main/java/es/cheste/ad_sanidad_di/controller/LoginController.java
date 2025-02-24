@@ -7,6 +7,7 @@ import es.cheste.ad_sanidad_di.model.Usuario;
 import es.cheste.ad_sanidad_di.repository.UsuarioRepository;
 import es.cheste.ad_sanidad_di.service.UsuarioServicie;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

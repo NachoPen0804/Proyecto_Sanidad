@@ -3,6 +3,7 @@ package es.cheste.ad_sanidad_di.controller;
 import es.cheste.ad_sanidad_di.api.PacienteApiClient;
 import es.cheste.ad_sanidad_di.model.Paciente;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

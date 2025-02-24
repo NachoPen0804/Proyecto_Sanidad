@@ -27,7 +27,7 @@
                </styleClass>
             </TextField>
             <Button fx:id="acept_edit_medico_btn" layoutX="302.0" layoutY="339.0" mnemonicParsing="false" onAction="#modificarMedico" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="ACEPTAR" />
-            <Button fx:id="cancel_edit_medico_btn" layoutX="67.0" layoutY="339.0" mnemonicParsing="false" onAction="#cancerarModificarMedico" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
+            <Button fx:id="cancel_edit_medico_btn" layoutX="67.0" layoutY="339.0" mnemonicParsing="false" onAction="#cancelarModificarMedico" prefHeight="40.0" prefWidth="161.0" styleClass="btn-medic" stylesheets="@styles/LoginDesign.css" text="CANCELAR" />
             <Label layoutX="91.0" layoutY="102.0" text="NOMBRE" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
