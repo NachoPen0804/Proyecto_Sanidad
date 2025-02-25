@@ -190,12 +190,16 @@ public class PanelMedicoController {
 		List<Visita> visitas = visitaApi.obtenerVisitas();
 		ObservableList<Visita> visitasObservableList = FXCollections.observableArrayList(visitas);
 		tablaCitas.setItems(visitasObservableList);
+		num_citas_totales.setText(String.valueOf(tablaCitas.getItems().size()));
+		num_total_pacientes.setText(String.valueOf(tablaPacientes.getItems().size()));
 	}
 
 	private void cargarDatosPacientes() {
 		List<Paciente> pacientes = pacienteApi.obtenerPacientes();
 		ObservableList<Paciente> pacienteObservableList = FXCollections.observableArrayList(pacientes);
 		tablaPacientes.setItems(pacienteObservableList);
+		num_citas_totales.setText(String.valueOf(tablaCitas.getItems().size()));
+		num_total_pacientes.setText(String.valueOf(tablaPacientes.getItems().size()));
 	}
 
 

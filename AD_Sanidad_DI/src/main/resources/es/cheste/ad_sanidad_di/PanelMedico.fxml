@@ -152,7 +152,7 @@
                                                                 <Font size="14.0" />
                                                             </font>
                                                         </Label>
-                                                        <Button fx:id="imprimir_btn" layoutX="728.0" layoutY="11.0" mnemonicParsing="false" onAction="#imprimirListaCitas" prefHeight="26.0" prefWidth="88.0" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Imprimir" textAlignment="CENTER" />
+                                                        <Button fx:id="imprimir_btn" layoutX="706.0" layoutY="11.0" mnemonicParsing="false" onAction="#imprimirListaCitas" prefHeight="26.0" prefWidth="88.0" styleClass="btn-3" stylesheets="@../ad_sanidad_di/styles/MainFormDesign.css" text="Imprimir" textAlignment="CENTER" />
                                                     </children>
                                                 </AnchorPane>
                                             </children>
