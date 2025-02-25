@@ -1,4 +1,4 @@
-# ✨🚑 𝗦𝗶𝘀𝘁𝗲𝗺𝗮 Gestión Médica - 𝗝𝗮𝘃𝗮𝗙𝗫 & 𝗦𝗽𝗿𝗶𝗻𝗴 𝗕𝗼𝗼𝘁 🚑✨
+# ✨🚑 𝗦𝗶𝘀𝘁𝗲𝗺𝗮 𝗚𝗲𝘀𝘁𝗶𝗼́𝗻 𝗠𝗲́𝗱𝗶𝗰𝗮 - 𝗝𝗮𝘃𝗮𝗙𝗫 & 𝗦𝗽𝗿𝗶𝗻𝗴 𝗕𝗼𝗼𝘁 🚑✨
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Sigmar&pause=1000&color=FF0000&background=004FFF00&width=435&lines=By.+Nacho+and+Sergi)](https://git.io/typing-svg)
 
