@@ -17,23 +17,26 @@ public class MedicoApiClient {
 	private final HttpClient client = HttpClient.newHttpClient();
 	private final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 	private final String baseUrl = "http://localhost:8080/api/medicos";
+	
 
-	public List<Medico> obtenerPacientes() {
-		HttpRequest request = HttpRequest.newBuilder()
-				.uri(URI.create(baseUrl))
-				.GET()
-				.build();
-
+	public List<Medico> obtenerMedicos() {
 		try {
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create(baseUrl))
+					.GET()
+					.build();
+
 			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-			return mapper.readValue(response.body(), new TypeReference<List<Medico>>() {
-			});
+			if (response.statusCode() == 200) {
+				return mapper.readValue(response.body(), new TypeReference<List<Medico>>() {});
+			} else {
+				throw new RuntimeException("Error al obtener médicos: " + response.body());
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			return Collections.emptyList();
+			throw new RuntimeException("Error al obtener médicos", e);
 		}
 	}
-
+	
 	public void create(Medico medico) {
 		try {
 			String json = mapper.writeValueAsString(medico);

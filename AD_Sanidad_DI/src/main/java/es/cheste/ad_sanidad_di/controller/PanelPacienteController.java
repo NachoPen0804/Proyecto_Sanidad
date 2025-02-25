@@ -11,10 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
@@ -26,40 +23,42 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PanelPacienteController {
-	@javafx.fxml.FXML
+
+	@FXML
 	private Label citas_pend_paciente;
-	@javafx.fxml.FXML
+	@FXML
 	private TableView<Visita> tablaCitas;
-	@javafx.fxml.FXML
+	@FXML
 	private AnchorPane main_form;
-	@javafx.fxml.FXML
+	@FXML
 	private Label nav_pacienteID;
-	@javafx.fxml.FXML
+	@FXML
 	private Button chn_pass_btn;
-	@javafx.fxml.FXML
+	@FXML
 	private Label current_form;
-	@javafx.fxml.FXML
+	@FXML
 	private TableColumn<Visita, String> id_medico_tabla;
-	@javafx.fxml.FXML
+	@FXML
 	private Button cerrarSesion_btn;
-	@javafx.fxml.FXML
+	@FXML
 	private AnchorPane panel_view_medicos;
-	@javafx.fxml.FXML
+	@FXML
 	private TableColumn<Visita, Long> id_tabla;
-	@javafx.fxml.FXML
+	@FXML
 	private TableColumn<Visita, LocalDate> fecha_tabla;
-	@javafx.fxml.FXML
+	@FXML
 	private Label nombre_paciente;
-
-	private Paciente paciente;
-
-	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
-    @FXML
-    private Circle top_profile;
+	@FXML
+	private Circle top_profile;
 	@FXML
 	private Label nombre_paciente_superior;
 	@FXML
-	private TableColumn hora_tabla;
+	private TableColumn<Visita, String> hora_tabla; // Columna para hora
+	@FXML
+	private TableColumn<Visita, String> minuto_tabla; // Nueva columna para minuto
+
+	private Paciente paciente;
+	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
 
 	public void cargarPaciente(Paciente pacienteLogin) {
 		this.paciente = pacienteLogin;
@@ -68,8 +67,7 @@ public class PanelPacienteController {
 		cargarDatosCitas();
 	}
 
-
-	@javafx.fxml.FXML
+	@FXML
 	public void cerrarSesion(ActionEvent actionEvent) {
 		Stage stage = (Stage) cerrarSesion_btn.getScene().getWindow();
 		stage.close();
@@ -87,12 +85,15 @@ public class PanelPacienteController {
 		}
 	}
 
-	@javafx.fxml.FXML
+	@FXML
 	public void ventanaCambiarContrasenya(ActionEvent actionEvent) {
+		
+		// Implementar si es necesario
 	}
 
 	public void setNombrePaciente(String nombre) {
 		nombre_paciente.setText(nombre);
+		nombre_paciente_superior.setText(nombre); // También actualiza el nombre superior
 	}
 
 	public void setIdPaciente(long id) {
@@ -101,10 +102,19 @@ public class PanelPacienteController {
 
 	@FXML
 	public void initialize() {
+		// Configurar las columnas de la tabla
 		id_tabla.setCellValueFactory(new PropertyValueFactory<>("id"));
 		id_medico_tabla.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMedico().getNombre()));
 		fecha_tabla.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+		hora_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getHora())));
+		minuto_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getMinuto())));
+
+		// Cargar datos iniciales si el paciente ya está establecido
+		if (paciente != null) {
+			cargarDatosCitas();
+		}
 	}
+
 	private void cargarDatosCitas() {
 		List<Visita> todasLasVisitas = visitaApi.obtenerVisitas();
 		List<Visita> visitasDelPaciente = todasLasVisitas.stream()

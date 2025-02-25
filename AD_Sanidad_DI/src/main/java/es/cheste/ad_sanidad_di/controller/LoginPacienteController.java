@@ -65,6 +65,7 @@ public class LoginPacienteController {
 			stage.setTitle("Sistema Hospitalario - Paciente");
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana principal");
+			e.printStackTrace();
 		}
 	}
 
