@@ -53,9 +53,9 @@ public class PanelPacienteController {
 	@FXML
 	private Label nombre_paciente_superior;
 	@FXML
-	private TableColumn<Visita, String> hora_tabla; // Columna para hora
+	private TableColumn<Visita, String> hora_tabla;
 	@FXML
-	private TableColumn<Visita, String> minuto_tabla; // Nueva columna para minuto
+	private TableColumn<Visita, String> minuto_tabla;
 
 	private Paciente paciente;
 	private final VisitaApiCliente visitaApi = new VisitaApiCliente();
@@ -87,13 +87,26 @@ public class PanelPacienteController {
 
 	@FXML
 	public void ventanaCambiarContrasenya(ActionEvent actionEvent) {
-		
-		// Implementar si es necesario
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PasswordEditPaciente.fxml"));
+			Parent root = loader.load();
+
+			Stage newStage = new Stage();
+			newStage.setScene(new Scene(root));
+			newStage.setTitle("Cambiar Contraseña");
+
+			ModificarContrasenyaPacienteController cambiarContrasenyaController = loader.getController();
+			cambiarContrasenyaController.setPaciente(paciente);
+
+			newStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setNombrePaciente(String nombre) {
 		nombre_paciente.setText(nombre);
-		nombre_paciente_superior.setText(nombre); // También actualiza el nombre superior
+		nombre_paciente_superior.setText(nombre);
 	}
 
 	public void setIdPaciente(long id) {
@@ -102,14 +115,12 @@ public class PanelPacienteController {
 
 	@FXML
 	public void initialize() {
-		// Configurar las columnas de la tabla
 		id_tabla.setCellValueFactory(new PropertyValueFactory<>("id"));
 		id_medico_tabla.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMedico().getNombre()));
 		fecha_tabla.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 		hora_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getHora())));
 		minuto_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getMinuto())));
 
-		// Cargar datos iniciales si el paciente ya está establecido
 		if (paciente != null) {
 			cargarDatosCitas();
 		}

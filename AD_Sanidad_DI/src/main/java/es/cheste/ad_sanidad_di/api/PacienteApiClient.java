@@ -107,4 +107,16 @@ public class PacienteApiClient {
 			return null;
 		}
 	}
+	public void actualizarPaciente(Paciente paciente) throws Exception {
+		String jsonRequest = mapper.writeValueAsString(paciente);
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(baseUrl + "/" + paciente.getId()))
+				.header("Content-Type", "application/json")
+				.PUT(HttpRequest.BodyPublishers.ofString(jsonRequest))
+				.build();
+		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		if (response.statusCode() != 200) {
+			throw new RuntimeException("Error al actualizar el paciente: " + response.statusCode());
+		}
+	}
 }

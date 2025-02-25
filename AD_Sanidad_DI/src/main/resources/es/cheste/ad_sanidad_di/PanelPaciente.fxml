@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.cheste.ad_sanidad_di.controller.PanelPacienteController">
@@ -29,9 +28,6 @@
                                         </Label>
                                     </children>
                                 </AnchorPane>
-                                <Circle fx:id="top_profile" fill="DODGERBLUE" layoutX="1012.0" layoutY="22.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="75.0" />
-                                <Label layoutX="1036.0" layoutY="13.0" text="Active" AnchorPane.rightAnchor="31.0" />
-                                <Circle fill="#24c756" layoutX="1081.0" layoutY="22.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="14.0" />
                                 <Label layoutX="653.0" layoutY="12.0" text="Bienvenido," AnchorPane.rightAnchor="385.0" />
                                 <Label fx:id="nombre_paciente_superior" layoutX="722.0" layoutY="11.0" prefHeight="19.0" prefWidth="158.0" text="ANTONIO CAMARENA" AnchorPane.rightAnchor="220.0">
                                     <font>
@@ -43,7 +39,7 @@
                                         <Font size="15.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="cerrarSesion_btn" layoutX="897.0" layoutY="8.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="79.0" styleClass="btn-3" stylesheets="@../ad_sanidad_di/styles/PatientMainFormDesign.css" text="Salir" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="8.0" />
+                                <Button fx:id="cerrarSesion_btn" layoutX="1006.0" layoutY="7.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="79.0" styleClass="btn-3" stylesheets="@../ad_sanidad_di/styles/PatientMainFormDesign.css" text="Salir" AnchorPane.rightAnchor="14.799999999999955" AnchorPane.topAnchor="7.0" />
                             </children>
                             <styleClass>
                                 <String fx:value="white-bg" />
@@ -128,8 +124,8 @@
                                                                 <TableColumn fx:id="id_tabla" prefWidth="62.399973690509796" text="ID" />
                                                                 <TableColumn fx:id="id_medico_tabla" prefWidth="104.80001831054688" text="MEDICO" />
                                                                 <TableColumn fx:id="fecha_tabla" prefWidth="88.0" text="FECHA" />
-                                                                <TableColumn fx:id="hora_tabla" text="Hora" prefWidth="75" />
-                                                                <TableColumn fx:id="minuto_tabla" text="Minuto" prefWidth="75" />
+                                                                <TableColumn fx:id="hora_tabla" prefWidth="75" text="Hora" />
+                                                                <TableColumn fx:id="minuto_tabla" prefWidth="75" text="Minuto" />
                                                              </columns>
                                                             <columnResizePolicy>
                                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

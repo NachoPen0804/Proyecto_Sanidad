@@ -82,12 +82,5 @@ public class EliminarCitaController {
 		alert.setContentText(mensaje);
 		alert.showAndWait();
 	}
-
-	@Deprecated
-	public void cancelDeletePaciente(ActionEvent actionEvent) {
-	}
-
-	@Deprecated
-	public void deletePaciente(ActionEvent actionEvent) {
-	}
+	
 }

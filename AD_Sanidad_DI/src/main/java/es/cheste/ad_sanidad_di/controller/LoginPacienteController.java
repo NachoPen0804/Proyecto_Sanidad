@@ -63,6 +63,8 @@ public class LoginPacienteController {
 			Stage stage = (Stage) login_boton.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setTitle("Sistema Hospitalario - Paciente");
+			stage.setX(100);  // Extremo izquierdo
+			stage.setY(100);
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana principal");
 			e.printStackTrace();
@@ -96,6 +98,7 @@ public class LoginPacienteController {
 			stage.setTitle("Login Paciente");
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana de login de paciente");
+			e.printStackTrace();
 		}
 	}
 	

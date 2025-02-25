@@ -69,4 +69,23 @@ public class VisitaController {
 	public List<Visita> obtenerVisitas() {
 		return visitaRepository.findAll();
 	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> eliminarVisita(@PathVariable Long id) {
+		try {
+			// Verificar si la visita existe
+			Visita visita = visitaRepository.findById(id)
+					.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Visita no encontrada con ID: " + id));
+
+			// Eliminar la visita
+			visitaRepository.delete(visita);
+
+			// Devolver respuesta 204 No Content para indicar éxito sin contenido
+			return ResponseEntity.noContent().build();
+		} catch (ResponseStatusException e) {
+			throw e;
+		} catch (Exception e) {
+			// Manejar errores inesperados
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al eliminar la visita", e);
+		}
+	}
 }

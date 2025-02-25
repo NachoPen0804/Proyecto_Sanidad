@@ -1,11 +1,7 @@
 package es.cheste.ad_sanidad_di.controller;
 
 import es.cheste.ad_sanidad_di.api.MedicoApiClient;
-import es.cheste.ad_sanidad_di.api.UsuarioApiClient;
 import es.cheste.ad_sanidad_di.model.Medico;
-import es.cheste.ad_sanidad_di.model.Usuario;
-import es.cheste.ad_sanidad_di.repository.UsuarioRepository;
-import es.cheste.ad_sanidad_di.service.UsuarioServicie;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -14,9 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
+import javafx.stage.StageStyle;
 import org.springframework.stereotype.Controller;
 
+@Controller
 public class LoginController {
 	@javafx.fxml.FXML
 	private TextField login_showPassword;
@@ -52,7 +49,7 @@ public class LoginController {
 			MedicoApiClient cliente = new MedicoApiClient();
 			Medico medicoEncontrado = cliente.verificarMedico(id, contraseña);
 			if (medicoEncontrado != null) {
-				abrirVentanaPrincipal( medicoEncontrado);
+				abrirVentanaPrincipal(medicoEncontrado);
 			} else {
 				mostrarError("Credenciales incorrectas", "ID o contraseña inválidos");
 			}
@@ -74,7 +71,7 @@ public class LoginController {
 		}
 	}
 
-	private void abrirVentanaPrincipal( Medico medico) {
+	private void abrirVentanaPrincipal(Medico medico) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/PanelMedico.fxml"));
 			Parent root = loader.load();
@@ -84,9 +81,23 @@ public class LoginController {
 			controller.setNombreMedicoSuperior(medico.getNombre());
 			controller.setId_medico(medico.getId());
 			controller.cargarMedico(medico);
-			Stage stage = (Stage) login_boton.getScene().getWindow();
-			stage.setScene(new Scene(root));
-			stage.setTitle("Sistema Hospitalario");
+
+			// Crear un nuevo Stage
+			Stage newStage = new Stage();
+			newStage.initStyle(StageStyle.UNDECORATED); // Sin barra de título
+			newStage.setScene(new Scene(root));
+			newStage.setTitle("Sistema Hospitalario");
+
+			// Posicionar la ventana en la esquina izquierda de la pantalla
+			newStage.setX(100);  // Extremo izquierdo
+			newStage.setY(100);  // Parte superior (ajustable según prefieras)
+
+			// Cerrar la ventana de login
+			Stage loginStage = (Stage) login_boton.getScene().getWindow();
+			loginStage.close();
+
+			// Mostrar la nueva ventana
+			newStage.show();
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana principal");
 			e.printStackTrace();
@@ -106,27 +117,42 @@ public class LoginController {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/LoginPaciente.fxml"));
 			Parent root = loader.load();
-			Stage stage = (Stage) login_paciente_view_boton.getScene().getWindow();
-			stage.setScene(new Scene(root));
-			stage.setTitle("Login Paciente");
+
+			Stage newStage = new Stage();
+			newStage.initStyle(StageStyle.UNDECORATED);
+			newStage.setScene(new Scene(root));
+			newStage.setTitle("Login Paciente");
+
+			Stage loginStage = (Stage) login_paciente_view_boton.getScene().getWindow();
+			loginStage.close();
+
+			newStage.show();
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana de login de paciente");
 		}
 	}
 
-	
-    @javafx.fxml.FXML
-    public void salirVentana(Event event) {
-    }
+	@javafx.fxml.FXML
+	public void salirVentana(Event event) {
+		Stage stage = (Stage) login_boton.getScene().getWindow();
+		stage.close();
+	}
 
 	@javafx.fxml.FXML
 	public void addMedico(ActionEvent actionEvent) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/MedicoAdd.fxml"));
 			Parent root = loader.load();
-			Stage stage = (Stage) register_boton.getScene().getWindow();
-			stage.setScene(new Scene(root));
-			stage.setTitle("Registro de Médico");
+
+			Stage newStage = new Stage();
+			newStage.initStyle(StageStyle.UNDECORATED);
+			newStage.setScene(new Scene(root));
+			newStage.setTitle("Registro de Médico");
+
+			Stage loginStage = (Stage) register_boton.getScene().getWindow();
+			loginStage.close();
+
+			newStage.show();
 		} catch (Exception e) {
 			mostrarError("Error", "No se pudo cargar la ventana de registro de médico");
 		}

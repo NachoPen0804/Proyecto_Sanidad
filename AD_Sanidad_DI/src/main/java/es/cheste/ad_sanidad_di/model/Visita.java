@@ -1,11 +1,13 @@
 package es.cheste.ad_sanidad_di.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
 @Table(name = "visita")
+@JsonIgnoreProperties(ignoreUnknown = true) // Ignora campos desconocidos como "timestamp"
 public class Visita {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

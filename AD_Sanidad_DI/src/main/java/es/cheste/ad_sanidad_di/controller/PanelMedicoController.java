@@ -18,23 +18,26 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.function.Function;
 
 public class PanelMedicoController {
 	@javafx.fxml.FXML
@@ -119,9 +122,9 @@ public class PanelMedicoController {
 	private Medico medicoiniciado;
 	@FXML
 	private Button imprimir_btn;
-    @FXML
-    private Button imprimir_btn1;
-    
+	@FXML
+	private Button imprimir_btn1;
+
 	@FXML
 	private TableColumn<Paciente, String> telefono_tabla;
 
@@ -129,7 +132,7 @@ public class PanelMedicoController {
 	private TableColumn<Visita, String> hora_tabla;
 	@FXML
 	private TableColumn<Visita, String> minutos_tabla;
-	
+
 	@Deprecated
 	public void pacientes_lista(ActionEvent actionEvent) {
 		try {
@@ -163,11 +166,21 @@ public class PanelMedicoController {
 
 		hora_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getHora()))); // Cambiado a "hora_tabla"
 		minutos_tabla.setCellValueFactory(data -> new SimpleStringProperty(String.format("%02d", data.getValue().getMinuto())));
-		
-		// Carga los datos
+		final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+		centerColumn(id_tabla, null);
+		centerColumn(id_paciente_tabla, null);
+		centerColumn(id_medico_tabla, null);
+		centerColumn(fecha_tabla, item -> ((LocalDate)item).format(dateFormat));
+		centerColumn(hora_tabla, null);
+		centerColumn(minutos_tabla, null);
 
-
+		// Para tablaPacientes
+		centerColumn(id_paciente_tabla_panel_paciente, null);
+		centerColumn(nombre_paciente_tabla_panel_paciente, null);
+		centerColumn(apellidos_paciente_tabla_panel_paciente, null);
+		centerColumn(pueblo_tabla, null);
+		centerColumn(telefono_tabla, null);
 		cargarDatosCitas();
 		cargarDatosPacientes();
 	}
@@ -198,6 +211,7 @@ public class PanelMedicoController {
 		stage.setScene(new Scene(root));
 		stage.setTitle("Añadir Paciente");
 		stage.initModality(Modality.APPLICATION_MODAL);
+
 		stage.showAndWait();
 	}
 
@@ -214,6 +228,7 @@ public class PanelMedicoController {
 		stage.setScene(new Scene(root));
 		stage.setTitle("Eliminar Paciente");
 		stage.initModality(Modality.APPLICATION_MODAL);
+
 		stage.showAndWait();
 	}
 
@@ -229,6 +244,7 @@ public class PanelMedicoController {
 		stage.setScene(new Scene(root));
 		stage.setTitle("Eliminar Cita");
 		stage.initModality(Modality.APPLICATION_MODAL);
+
 		stage.showAndWait();
 	}
 
@@ -250,16 +266,17 @@ public class PanelMedicoController {
 	public void editarDatosPerfil() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/cheste/ad_sanidad_di/MedicoEdit.fxml"));
 		Parent root = loader.load();
-		
+
 		ModificarMedicoController controller = loader.getController();
-		controller.setMedicoSeleccionado(medicoiniciado); // El médico actualmente logueado
+		controller.setMedicoSeleccionado(medicoiniciado);
 		controller.setPanelMedicoController(this);
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.setTitle("Editar paciente");
 		stage.initModality(Modality.APPLICATION_MODAL);
+
 		stage.showAndWait();
-		
+
 	}
 
 	@FXML
@@ -275,6 +292,7 @@ public class PanelMedicoController {
 		stage.setScene(new Scene(root));
 		stage.setTitle("Añadir Cita");
 		stage.initModality(Modality.APPLICATION_MODAL);
+
 		stage.showAndWait();
 	}
 
@@ -295,6 +313,7 @@ public class PanelMedicoController {
 		stage.setScene(new Scene(root));
 		stage.setTitle("Eliminar Paciente");
 		stage.initModality(Modality.APPLICATION_MODAL);
+
 		stage.showAndWait();
 
 
@@ -346,6 +365,7 @@ public class PanelMedicoController {
 			Stage loginStage = new Stage();
 			loginStage.setScene(new Scene(root));
 			loginStage.setTitle("Inicio de Sesión");
+			loginStage.initStyle(StageStyle.UNDECORATED);
 			loginStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -408,6 +428,25 @@ public class PanelMedicoController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private <S, T> void centerColumn(TableColumn<S, T> column, Function<T, String> formatter) {
+		column.setCellFactory(tc -> {
+			TableCell<S, T> cell = new TableCell<S, T>() {
+				@Override
+				protected void updateItem(T item, boolean empty) {
+					super.updateItem(item, empty);
+					if (empty) {
+						setText(null);
+					} else {
+						String text = formatter != null ? formatter.apply(item) : item.toString();
+						setText(text);
+						setAlignment(Pos.CENTER);
+					}
+				}
+			};
+			return cell;
+		});
 	}
 
 }
